@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="actionbar_text">22sp</dimen>
+    <dimen name="button_radius">5.0dip</dimen>
+
+    <!-- ScanAssetsFragment -->
+    <dimen name="bottom_vertical_margin">10dp</dimen>
+    <dimen name="login_margin">10dp</dimen>
+    <dimen name="edt_width">200dp</dimen>
+    <dimen name="icon_size">50dp</dimen>
+    <dimen name="home_icon_size">95dp</dimen>
+    <dimen name="green_padding">10dp</dimen>
+    <dimen name="select_padding">20dp</dimen>
+    <dimen name="base_padding">10dp</dimen>
+    <dimen name="text_size">12sp</dimen>
+    <dimen name="booksum_text_size">16sp</dimen>
+    <dimen name="image_size">100dp</dimen>
+    <dimen name="grid_vertical_spacing">30dp</dimen>
+
+</resources>

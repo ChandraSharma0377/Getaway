@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:temp="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/darker_gray"
+            android:padding="10dp" >
+
+            <ImageView
+                android:id="@+id/iv_thumb"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/home_white" />
+
+            <TextView
+                android:id="@+id/tv_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_thumb"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_location"
+                android:layout_toRightOf="@+id/iv_thumb"
+                android:layout_above="@+id/calendarView"
+                android:text="Year  2016"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_thumb"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_colostrip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/calendarView"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="1" >
+
+                <Button
+                    style="@style/ll_colostrip_style"
+                    android:layout_weight=".22"
+                    android:drawableLeft="@drawable/red"
+                    android:text="Booked" />
+
+                <Button
+                    style="@style/ll_colostrip_style"
+                    android:layout_weight=".39"
+                    android:drawableLeft="@drawable/yellow"
+                    android:text="Awaiting Payment" />
+
+                <Button
+                    style="@style/ll_colostrip_style"
+                    android:layout_weight=".39"
+                    android:drawableLeft="@drawable/orange"
+                    android:text="Awaiting Approval" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_checkin"
+            style="@style/ll_style" >
+
+            <TextView
+                android:id="@+id/tv_booking_done"
+                style="@style/tv_style"
+                android:layout_weight=".85" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".15"
+                android:background="@drawable/drop_down"
+                android:scaleType="centerInside" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_checkout"
+            style="@style/ll_style" >
+
+            <TextView
+                android:id="@+id/tv_booking_info"
+                style="@style/tv_style"
+                android:layout_weight=".85" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".15"
+                android:background="@drawable/drop_down"
+                android:scaleType="centerInside" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_noofperson"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/transparent" >
+
+            <TextView
+                android:id="@+id/tv_start_date"
+                style="@style/tv_style"
+                android:layout_marginRight="5dp"
+                android:layout_weight=".5"
+                android:background="@drawable/edt_white_round_rect"
+                android:padding="10dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tv_end_date"
+                style="@style/tv_style"
+                android:layout_marginLeft="5dp"
+                android:layout_weight=".5"
+                android:background="@drawable/edt_white_round_rect"
+                android:padding="10dp"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_requiredcook"
+            style="@style/ll_style"
+            android:visibility="gone" >
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".6"
+                android:text="Customers Shortcode - " />
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".4"
+                android:text="ABC123XYZ14" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edt_noofadult"
+            style="@style/edt_style"
+            android:hint="No of Adults"
+            android:inputType="number"
+            android:maxLength="2"
+            android:maxLines="1" />
+
+        <EditText
+            android:id="@+id/edt_noofchildren"
+            style="@style/edt_style"
+            android:hint="No of Children"
+            android:inputType="number"
+            android:maxLength="2"
+            android:maxLines="1" />
+
+        <EditText
+            android:id="@+id/edt_remark"
+            style="@style/edt_style"
+            android:layout_marginBottom="10dp"
+            android:gravity="top"
+            android:hint="Remarks"
+            android:lines="3"
+            android:singleLine="false"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_top"
+        android:orientation="horizontal"
+        android:weightSum="1" >
+
+        <Button
+            android:id="@+id/btn_approve"
+            style="@style/btn_style"
+            android:layout_width="0dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight=".5"
+            android:text="@string/approve" />
+
+        <Button
+            android:id="@+id/btn_reject"
+            style="@style/btn_style"
+            android:layout_width="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight=".5"
+            android:text="@string/reject" />
+    </LinearLayout>
+
+</RelativeLayout>

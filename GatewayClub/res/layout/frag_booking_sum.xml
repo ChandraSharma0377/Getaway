@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1" >
+
+            <RelativeLayout
+                android:id="@+id/ll_month1"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight=".5"
+                android:background="@color/blue"
+                android:orientation="horizontal"
+                android:padding="@dimen/green_padding" >
+
+                <TextView
+                    android:id="@+id/tv_month1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="@dimen/select_padding"
+                    android:text="@string/month"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/booksum_text_size" />
+
+                <ImageButton
+                    android:id="@+id/iv_expand"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:scaleType="fitCenter"
+                    android:layout_marginRight="@dimen/select_padding"
+                    android:background="@drawable/drop_down"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/ll_year1"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight=".5"
+                android:background="@color/dark_blue"
+                android:orientation="horizontal"
+                android:padding="@dimen/green_padding" >
+
+                <TextView
+                    android:id="@+id/tv_year1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="@dimen/select_padding"
+                    android:text="@string/year"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/booksum_text_size" />
+
+                <ImageView
+                    android:id="@+id/iv_expand"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/select_padding"
+                    android:background="@drawable/drop_down"
+                    android:scaleType="centerInside" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/green"
+            android:orientation="horizontal"
+            android:padding="@dimen/green_padding" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/select_padding"
+                android:text="@string/booked_by"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/booksum_text_size" />
+
+            <ImageView
+                android:id="@+id/iv_expand"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/select_padding"
+                android:background="@drawable/drop_down"
+                android:scaleType="centerInside" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/light_green"
+            android:orientation="horizontal"
+            android:padding="@dimen/green_padding" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/select_padding"
+                android:text="@string/confirmed"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/booksum_text_size" />
+
+            <ImageView
+                android:id="@+id/iv_expand"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/drop_down"
+                android:scaleType="centerInside"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
+            android:orientation="horizontal"
+            android:weightSum="1" >
+
+            <TextView
+                android:id="@+id/edt_count1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight=".5"
+                android:background="@drawable/edt_bottom_right"
+                android:hint="@string/count"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/edt_amount1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight=".5"
+                android:background="@drawable/edt_bottom_left"
+                android:hint="@string/amount"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
+            android:orientation="horizontal"
+            android:weightSum="1" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight=".5"
+                android:background="@drawable/edt_top_right"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight=".5"
+                android:background="@drawable/edt_top_left"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="1" >
+
+            <RelativeLayout
+                android:id="@+id/ll_month2"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight=".5"
+                android:background="@color/blue"
+                android:orientation="horizontal"
+                android:padding="@dimen/green_padding" >
+
+                <TextView
+                    android:id="@+id/tv_month2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="@dimen/select_padding"
+                    android:text="@string/month"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/booksum_text_size" />
+
+                <ImageView
+                    android:id="@+id/iv_expand"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/select_padding"
+                    android:background="@drawable/drop_down"
+                    android:scaleType="centerInside" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/ll_year2"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight=".5"
+                android:background="@color/dark_blue"
+                android:orientation="horizontal"
+                android:padding="@dimen/green_padding" >
+
+                <TextView
+                    android:id="@+id/tv_year2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="@dimen/select_padding"
+                    android:text="@string/year"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/booksum_text_size" />
+
+                <ImageView
+                    android:id="@+id/iv_expand"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/select_padding"
+                    android:background="@drawable/drop_down"
+                    android:scaleType="centerInside" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/green"
+            android:orientation="horizontal"
+            android:padding="@dimen/green_padding" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/select_padding"
+                android:text="@string/booked_by"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/booksum_text_size" />
+
+            <ImageView
+                android:id="@+id/iv_expand"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/select_padding"
+                android:background="@drawable/drop_down"
+                android:scaleType="centerInside" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/light_green"
+            android:orientation="horizontal"
+            android:padding="@dimen/green_padding" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/select_padding"
+                android:text="@string/cancelled"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/booksum_text_size" />
+
+            <ImageView
+                android:id="@+id/iv_expand"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/drop_down"
+                android:scaleType="centerInside"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
+            android:orientation="horizontal"
+            android:weightSum="1" >
+
+            <TextView
+                android:id="@+id/edt_count2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight=".5"
+                android:background="@drawable/edt_bottom_right"
+                android:hint="@string/count"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/edt_amount2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight=".5"
+                android:background="@drawable/edt_bottom_left"
+                android:hint="@string/amount"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
+            android:orientation="horizontal"
+            android:weightSum="1" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight=".5"
+                android:background="@drawable/edt_top_right"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight=".5"
+                android:background="@drawable/edt_top_left"
+                android:inputType="number" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

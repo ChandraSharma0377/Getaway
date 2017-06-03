@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Location : Alibag" />
+
+        <TextView
+            android:id="@+id/tv_distance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Alibag13BKHim" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_top"
+        android:orientation="horizontal"
+        android:weightSum="1" >
+
+        <Button
+            android:id="@+id/btn_editphoto"
+            style="@style/btn_style"
+            android:layout_width="0dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight=".5"
+            android:text="Edit Photos" />
+
+        <Button
+            style="@style/btn_style"
+            android:layout_width="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight=".5"
+            android:text="@string/reject"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <com.gatewayclub.app.helper.ExpandableHeightGridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_edit"
+        android:layout_margin="5dp"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:numColumns="2"
+         >
+    </com.gatewayclub.app.helper.ExpandableHeightGridView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gridView"
+        android:orientation="horizontal"
+        android:weightSum="1" >
+
+        <Button
+            android:id="@+id/btn_addmore"
+            style="@style/btn_style"
+            android:layout_width="0dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight=".5"
+            android:text="@string/addmore" />
+
+        <Button
+            android:id="@+id/btn_confirm"
+            style="@style/btn_style"
+            android:layout_width="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight=".5"
+            android:text="@string/confirm" />
+    </LinearLayout>
+
+</RelativeLayout>

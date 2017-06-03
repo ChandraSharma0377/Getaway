@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#052B5C</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="grey">#808080</color>
+    <color name="yellow">#FF9933</color>
+    <color name="orange">#FF5722</color>
+    <color name="landing_bg">#F1F5F7</color>
+    <color name="actionBar_background">#0072BC</color>
+    <color name="counter_text_bg">#626262</color>
+    <color name="counter_text_color">#c5c4c4</color>
+    <color name="theme_orange">#F58220</color>
+    <color name="orange_light">#F9A51C</color>
+    <color name="red">#ED1C24</color>
+    <color name="green">#61BC47</color>
+    <color name="light_green">#90d07e</color>
+    <color name="blue">#00ADEF</color>
+    <color name="dark_blue">#009bd7</color>
+    <color name="grey_primary">#A9A9A9</color>
+    <color name="grey_secondry">#78797B</color>
+    <color name="grey_tertairy">#231F20</color>
+    <color name="list_divider">#78797B</color>
+    <color name="white">#ffffff</color>
+    <color name="btn_bg_color">#F2821F</color>
+
+</resources>

@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+
+        <LinearLayout
+            android:id="@+id/ll_bedromm"
+            style="@style/ll_style" >
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".4"
+                android:text="No. of Bedrooms" />
+
+            <RadioGroup
+                android:id="@+id/rg_yesno"
+                style="@style/tv_style"
+                android:layout_weight=".6"
+                android:orientation="horizontal"
+                android:weightSum="1" >
+
+                <RadioButton
+                    android:id="@+id/rb_yes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:padding="1sp"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/rb_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:checked="true"
+                    android:padding="1sp"
+                    android:text="No" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_room_size"
+            style="@style/ll_style" >
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".4"
+                android:text="Size of room" />
+
+            <RadioGroup
+                android:id="@+id/rg_yesno"
+                style="@style/tv_style"
+                android:layout_weight=".6"
+                android:orientation="horizontal"
+                android:weightSum="1" >
+
+                <RadioButton
+                    android:id="@+id/rb_yes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:padding="1sp"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/rb_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:checked="true"
+                    android:padding="1sp"
+                    android:text="No" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_bathroom"
+            style="@style/ll_style" >
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".4"
+                android:text="Bathroom" />
+
+            <RadioGroup
+                android:id="@+id/rg_yesno"
+                style="@style/tv_style"
+                android:layout_weight=".6"
+                android:orientation="horizontal"
+                android:weightSum="1" >
+
+                <RadioButton
+                    android:id="@+id/rb_yes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:padding="1sp"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/rb_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:checked="true"
+                    android:padding="1sp"
+                    android:text="No" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_geyser"
+            style="@style/ll_style" >
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".4"
+                android:text="geyser" />
+
+            <RadioGroup
+                android:id="@+id/rg_yesno"
+                style="@style/tv_style"
+                android:layout_weight=".6"
+                android:orientation="horizontal"
+                android:weightSum="1" >
+
+                <RadioButton
+                    android:id="@+id/rb_yes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:padding="1sp"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/rb_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:checked="true"
+                    android:padding="1sp"
+                    android:text="No" />
+            </RadioGroup>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/ll_western_toilet"
+            style="@style/ll_style" >
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".4"
+                android:text="Western Toilet" />
+
+            <RadioGroup
+                android:id="@+id/rg_yesno"
+                style="@style/tv_style"
+                android:layout_weight=".6"
+                android:orientation="horizontal"
+                android:weightSum="1" >
+
+                <RadioButton
+                    android:id="@+id/rb_yes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:padding="1sp"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/rb_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:checked="true"
+                    android:padding="1sp"
+                    android:text="No" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_indian_toilet"
+            style="@style/ll_style" >
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".4"
+                android:text="Indian Toilet" />
+
+            <RadioGroup
+                android:id="@+id/rg_yesno"
+                style="@style/tv_style"
+                android:layout_weight=".6"
+                android:orientation="horizontal"
+                android:weightSum="1" >
+
+                <RadioButton
+                    android:id="@+id/rb_yes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:padding="1sp"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/rb_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:checked="true"
+                    android:padding="1sp"
+                    android:text="No" />
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_ac"
+            style="@style/ll_style" >
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".4"
+                android:text="AC" />
+
+            <RadioGroup
+                android:id="@+id/rg_yesno"
+                style="@style/tv_style"
+                android:layout_weight=".6"
+                android:orientation="horizontal"
+                android:weightSum="1" >
+
+                <RadioButton
+                    android:id="@+id/rb_yes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:padding="1sp"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/rb_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:checked="true"
+                    android:padding="1sp"
+                    android:text="No" />
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_balcony"
+            style="@style/ll_style" >
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".4"
+                android:text="Balcony" />
+
+            <RadioGroup
+                android:id="@+id/rg_yesno"
+                style="@style/tv_style"
+                android:layout_weight=".6"
+                android:orientation="horizontal"
+                android:weightSum="1" >
+
+                <RadioButton
+                    android:id="@+id/rb_yes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:padding="1sp"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/rb_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:checked="true"
+                    android:padding="1sp"
+                    android:text="No" />
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_bathtub"
+            style="@style/ll_style" >
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".4"
+                android:text="Bathtub" />
+
+            <RadioGroup
+                android:id="@+id/rg_yesno"
+                style="@style/tv_style"
+                android:layout_weight=".6"
+                android:orientation="horizontal"
+                android:weightSum="1" >
+
+                <RadioButton
+                    android:id="@+id/rb_yes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:padding="1sp"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/rb_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:checked="true"
+                    android:padding="1sp"
+                    android:text="No" />
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_jacuzzy"
+            style="@style/ll_style" >
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".4"
+                android:text="Jacuzzy" />
+
+            <RadioGroup
+                android:id="@+id/rg_yesno"
+                style="@style/tv_style"
+                android:layout_weight=".6"
+                android:orientation="horizontal"
+                android:weightSum="1" >
+
+                <RadioButton
+                    android:id="@+id/rb_yes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:padding="1sp"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/rb_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:checked="true"
+                    android:padding="1sp"
+                    android:text="No" />
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_tv"
+            style="@style/ll_style" >
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".4"
+                android:text="TV" />
+
+            <RadioGroup
+                android:id="@+id/rg_yesno"
+                style="@style/tv_style"
+                android:layout_weight=".6"
+                android:orientation="horizontal"
+                android:weightSum="1" >
+
+                <RadioButton
+                    android:id="@+id/rb_yes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:padding="1sp"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/rb_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:checked="true"
+                    android:padding="1sp"
+                    android:text="No" />
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_fan"
+            style="@style/ll_style" >
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".4"
+                android:text="Fan" />
+
+            <RadioGroup
+                android:id="@+id/rg_yesno"
+                style="@style/tv_style"
+                android:layout_weight=".6"
+                android:orientation="horizontal"
+                android:weightSum="1" >
+
+                <RadioButton
+                    android:id="@+id/rb_yes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:padding="1sp"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/rb_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:checked="true"
+                    android:padding="1sp"
+                    android:text="No" />
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_curtain"
+            style="@style/ll_style" >
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".4"
+                android:text="Curtains" />
+
+            <RadioGroup
+                android:id="@+id/rg_yesno"
+                style="@style/tv_style"
+                android:layout_weight=".6"
+                android:orientation="horizontal"
+                android:weightSum="1" >
+
+                <RadioButton
+                    android:id="@+id/rb_yes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:padding="1sp"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/rb_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:checked="true"
+                    android:padding="1sp"
+                    android:text="No" />
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

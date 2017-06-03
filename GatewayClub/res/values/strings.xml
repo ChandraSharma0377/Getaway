@@ -1,0 +1,63 @@
+<resources>
+
+    <string name="app_name">TGC bungalow owner\'s app</string>
+    <string name="offline">Network unavailable. Please connect your device to network.</string>
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+
+    <!-- 1. Agent information -->
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="contact_person">Contact Person</string>
+    <string name="contact_no">Contact  No</string>
+    <string name="emailid">Email ID</string>
+    <string name="agency_code">Agency Code </string>
+    <string name="contact">Contact </string>
+
+    <!-- Login information -->
+    <string name="uname">Username</string>
+    <string name="pwd">Password</string>
+    <string name="login">Login</string>
+
+    <!-- Alert information -->
+
+    <string name="alert_header">ALERTS AND NOTICES BY GATWAY CLUB</string>
+    <string name="respond">RESPOND</string>
+
+    <!-- Book information -->
+    <string name="book">CONFIRM</string>
+    <string name="select_property">Select Property</string>
+    <string name="select_location">Select Location</string>
+    <!-- Calander information -->
+    <string name="approve">APPROVE</string>
+    <string name="reject">REJECT</string>
+
+    <!-- Customer information -->
+    <string name="cutomerreivew">CUSTOMER REVIEWS</string>
+
+    <!-- 1. Home information -->
+    <string name="books">Book</string>
+    <string name="calander">Calender</string>
+    <string name="alert">Alerts</string>
+    <string name="edit">Edit</string>
+    <string name="creivew">Customer\nReview</string>
+    <string name="agent">Agents </string>
+
+    <!-- Booking summary -->
+    <string name="back">BACK</string>
+    <string name="close">CLOSE</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+    <string name="booked_by">Booked by</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="confirmed">Confirmed</string>
+    <string name="count">Count</string>
+    <string name="amount">Amount</string>
+
+    <!-- edit more -->
+    <string name="addmore">ADD MORE</string>
+    <string name="confirm">CONFIRM</string>
+    <string name="change">Change</string>
+    <string name="remove">Remove</string>
+
+</resources>

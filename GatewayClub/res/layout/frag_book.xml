@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/darker_gray"
+            android:padding="10dp" >
+
+            <ImageView
+                android:id="@+id/iv_thumb"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/home_white" />
+
+            <TextView
+                android:id="@+id/tv_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_thumb"
+                android:layout_above="@+id/calendarView"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_location"
+              	android:layout_above="@+id/calendarView"
+                android:text=""
+                android:textSize="16sp"
+                android:visibility="gone" />
+            	<LinearLayout
+ 		     	
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_thumb"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </RelativeLayout>
+ 	
+        <EditText
+            android:id="@+id/edt_mobile"
+            style="@style/edt_style"
+            android:hint="Mobile"
+            android:inputType="number"
+            android:maxLength="10" />
+
+        <EditText
+            android:id="@+id/edt_customername"
+            style="@style/edt_style"
+            android:hint="Customer name" />
+
+        <EditText
+            android:id="@+id/edt_address"
+            style="@style/edt_style"
+            android:hint="Address"
+            android:text="address"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/edt_email"
+            style="@style/edt_style"
+            android:hint="@string/emailid"
+            android:inputType="textEmailAddress" />
+
+        <LinearLayout
+            android:id="@+id/ll_checkin"
+            style="@style/ll_style" >
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".3"
+                android:text="Check in" />
+
+            <TextView
+                android:id="@+id/tv_checkin_date"
+                style="@style/tv_style"
+                android:layout_weight=".3"
+                android:text="" />
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".2"
+                android:text="  Time" />
+
+            <TextView
+                android:id="@+id/tv_checkin_time"
+                style="@style/tv_style"
+                android:layout_weight=".2"
+                android:text="11 AM" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_checkout"
+            style="@style/ll_style" >
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".3"
+                android:text="Check out" />
+
+            <TextView
+                android:id="@+id/tv_checkout_date"
+                style="@style/tv_style"
+                android:layout_weight=".3"
+                android:text="" />
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".2"
+                android:text="  Time" />
+
+            <TextView
+                android:id="@+id/tv_checkout_time"
+                style="@style/tv_style"
+                android:layout_weight=".2"
+                android:text="10 AM" />
+        </LinearLayout>
+
+        <!-- <LinearLayout -->
+        <!-- android:id="@+id/ll_noofperson" -->
+        <!-- style="@style/ll_style" > -->
+
+
+        <!-- <TextView -->
+        <!-- style="@style/tv_style" -->
+        <!-- android:layout_weight=".5" -->
+        <!-- android:text="no of persons" /> -->
+
+
+        <!-- <EditText -->
+        <!-- android:id="@+id/edt_noofperson" -->
+        <!-- android:layout_width="0dp" -->
+        <!-- android:layout_height="wrap_content" -->
+        <!-- android:layout_weight=".5" -->
+        <!-- /> -->
+        <!-- </LinearLayout> -->
+
+        <EditText
+            android:id="@+id/edt_noofadult"
+            style="@style/edt_style"
+            android:hint="No of Adults"
+            android:inputType="number"
+            android:maxLength="2"
+            android:maxLines="1" />
+
+        <EditText
+            android:id="@+id/edt_noofchildren"
+            style="@style/edt_style"
+            android:hint="No of Children"
+            android:inputType="number"
+            android:maxLength="2"
+            android:maxLines="1" />
+
+        <LinearLayout style="@style/ll_style" >
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".6"
+                android:text="Total no of person " />
+
+            <TextView
+                android:id="@+id/tv_totalperson"
+                style="@style/tv_style"
+                android:layout_weight=".4"
+                android:inputType="number"
+                android:maxLength="2"
+                android:maxLines="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_requiredcook"
+            style="@style/ll_style" >
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".4"
+                android:text="Required cook" />
+
+            <RadioGroup
+                android:id="@+id/rg_yesno"
+                style="@style/tv_style"
+                android:layout_weight=".6"
+                android:orientation="horizontal"
+                android:weightSum="1" >
+
+                <RadioButton
+                    android:id="@+id/rb_yes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:padding="1sp"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/rb_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:button="@drawable/customdrawablecheckbox"
+                    android:checked="true"
+                    android:padding="1sp"
+                    android:text="No" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_bookby"
+            style="@style/ll_style" >
+
+            <TextView
+                style="@style/tv_style"
+                android:layout_weight=".3"
+                android:text="Booked by -" />
+
+            <Spinner
+                android:id="@+id/sp_agent"
+                style="@style/tv_style"
+                android:layout_weight=".7"
+                android:gravity="left" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_top"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:weightSum="1" >
+
+        <Button
+            android:id="@+id/btn_book"
+            style="@style/btn_style"
+            android:layout_width="0dp"
+            android:layout_weight=".5"
+            android:text="@string/book" />
+    </LinearLayout>
+
+</RelativeLayout>
