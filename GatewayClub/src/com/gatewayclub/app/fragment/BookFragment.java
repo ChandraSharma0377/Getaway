@@ -536,9 +536,10 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
 								ExtraWeekendRate = jo.getString("ExtraWeekendRate");
 								ExtraHolidayRate = jo.getString("ExtraHolidayRate");
 								FoodRatePerPerson = jo.getString("FoodRatePerPerson");
+								String monthname=(String)android.text.format.DateFormat.format("MMMM", new Date());
 								tv_location.setText("Location : " + pdto.getPropertyName()
-										+ "\nMonth - Feb \nWeek Days Rates-" + WeekendRate + "\nWeek End Rates-"
-										+ ExtraWeekendRate + "\nMinimum No of Adults-" + pdto.getPropertymin_capacity()
+										+ "\nMonth - "+monthname+" \nWeek Days Rates-" + prRatePerNight + "\nWeek End Rates-"
+										+ WeekendRate + "\nMinimum No of Adults-" + pdto.getPropertymin_capacity()
 										+ "\nMaximum No Of Adults-" + pdto.getPropertymax_capacity());
 
 							} else {
@@ -602,7 +603,7 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
 					System.out.println("property rate result is : " + (result == null ? "" : result));
 					progressDialog1.dismiss();
 				} else {
-					Log.i("get customer info  response", result == null ? "" : result);
+					Log.i("get customer info response", result == null ? "" : result);
 					ShowAlertInformation.showDialog(getActivity(), "Error", "Error");
 					progressDialog1.dismiss();
 				}
