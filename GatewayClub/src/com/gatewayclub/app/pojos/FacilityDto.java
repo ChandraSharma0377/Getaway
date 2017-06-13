@@ -11,6 +11,10 @@ public class FacilityDto {
     private Medical medical;
     private Transport transport;
     private Tourism tourism;
+    private Bedroom bedroom;
+    private Kitchen kitchen;
+    private Food food;
+    private Hall hall;
 
     public IndoorGames getIndoorGames() {
         return indoorGames;
@@ -52,6 +56,38 @@ public class FacilityDto {
         this.tourism = tourism;
     }
 
+    public Bedroom getBedroom() {
+        return bedroom;
+    }
+
+    public void setBedroom(Bedroom bedroom) {
+        this.bedroom = bedroom;
+    }
+
+    public Kitchen getKitchen() {
+        return kitchen;
+    }
+
+    public void setKitchen(Kitchen kitchen) {
+        this.kitchen = kitchen;
+    }
+
+    public Food getFood() {
+        return food;
+    }
+
+    public void setFood(Food food) {
+        this.food = food;
+    }
+
+    public Hall getHall() {
+        return hall;
+    }
+
+    public void setHall(Hall hall) {
+        this.hall = hall;
+    }
+
     @Override
     public String toString() {
         return "FacilityDto{" +
@@ -60,7 +96,10 @@ public class FacilityDto {
                 ", medical=" + medical +
                 ", transport=" + transport +
                 ", tourism=" + tourism +
+                ", bedroom=" + bedroom +
+                ", kitchen=" + kitchen +
+                ", food=" + food +
+                ", hall=" + hall +
                 '}';
     }
-
 }

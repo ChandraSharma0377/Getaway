@@ -32,5 +32,31 @@
             android:padding="1sp"
             android:text="No" />
     </RadioGroup>
+
+    <Spinner
+        android:id="@+id/sp_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".6"
+        android:background="@drawable/spinner_bg"
+        android:divider="@android:color/black"
+        android:dividerHeight="5dp"
+        android:entries="@array/array_number"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:visibility="gone" />
+
+    <Spinner
+        android:id="@+id/sp_size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".6"
+        android:background="@drawable/spinner_bg"
+        android:divider="@android:color/black"
+        android:dividerHeight="5dp"
+        android:entries="@array/array_size"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:visibility="gone" />
 </LinearLayout>
 
