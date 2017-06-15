@@ -1,22 +1,5 @@
 package com.gatewayclub.app.fragment;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import com.gatewayclub.app.R;
-import com.gatewayclub.app.adapters.LocationSpinAdapter;
-import com.gatewayclub.app.adapters.PropertySpinAdapter;
-import com.gatewayclub.app.asynctask.AsyncProcess;
-import com.gatewayclub.app.helper.Commons;
-import com.gatewayclub.app.helper.ShowAlertInformation;
-import com.gatewayclub.app.main.MainActivity;
-import com.gatewayclub.app.main.MainActivityOptions;
-import com.gatewayclub.app.pojos.PropertyDto;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -35,6 +18,23 @@ import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.gatewayclub.app.R;
+import com.gatewayclub.app.adapters.LocationSpinAdapter;
+import com.gatewayclub.app.adapters.PropertySpinAdapter;
+import com.gatewayclub.app.asynctask.AsyncProcess;
+import com.gatewayclub.app.helper.Commons;
+import com.gatewayclub.app.helper.ShowAlertInformation;
+import com.gatewayclub.app.main.MainActivity;
+import com.gatewayclub.app.main.MainActivityOptions;
+import com.gatewayclub.app.pojos.PropertyDto;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
 
 public abstract class BaseFragment extends Fragment implements View.OnClickListener {
 
@@ -114,9 +114,11 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 					postDataParams.put("pmOwnerID", MainActivity.getMainScreenActivity().getUserID());
 					new PropertyTask(postDataParams).execute(Commons.GET_PROPERTY_LIST);
 					sp_property.setEnabled(true);
+					locationSelect( Commons.locationLists.get(position).getLocationName());
 				} else {
 					sp_property.setEnabled(false);
 					initPropertySpinner();
+					locationSelect("");
 				}
 			}
 
@@ -390,4 +392,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
 	protected void fetchdata(TextView tv) {
 	}
+
+	public abstract void locationSelect(String location);
 }

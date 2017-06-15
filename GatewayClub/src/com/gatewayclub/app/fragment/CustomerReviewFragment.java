@@ -1,19 +1,6 @@
 
 package com.gatewayclub.app.fragment;
 
-import java.util.HashMap;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import com.gatewayclub.app.R;
-import com.gatewayclub.app.asynctask.AsyncProcess;
-import com.gatewayclub.app.helper.Commons;
-import com.gatewayclub.app.helper.ShowAlertInformation;
-import com.gatewayclub.app.main.MainActivity;
-import com.gatewayclub.app.pojos.PropertyDto;
-import com.squareup.picasso.Picasso;
-
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -26,11 +13,25 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.gatewayclub.app.R;
+import com.gatewayclub.app.asynctask.AsyncProcess;
+import com.gatewayclub.app.helper.Commons;
+import com.gatewayclub.app.helper.ShowAlertInformation;
+import com.gatewayclub.app.main.MainActivity;
+import com.gatewayclub.app.pojos.PropertyDto;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+
 public class CustomerReviewFragment extends BaseFragment {
 
 	private ProgressDialog progressDialog;
 	private TextView tv_alert_detail;
 	private ImageView iv_thumb;
+	private TextView tv_location;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle args) {
 		super.onCreateView(inflater, container, args);
@@ -38,6 +39,7 @@ public class CustomerReviewFragment extends BaseFragment {
 		getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 		iv_thumb = (ImageView) view.findViewById(R.id.iv_thumb);
 		tv_alert_detail = (TextView) view.findViewById(R.id.tv_alert_detail);
+		tv_location =(TextView)view.findViewById(R.id.tv_location);
 		tv_alert_detail.setText("");
 		addView(view);
 
@@ -80,18 +82,6 @@ public class CustomerReviewFragment extends BaseFragment {
 					JSONArray jaaray = new JSONArray(value);
 					try {
 						JSONObject jo = jaaray.getJSONObject(0);
-						// [{
-						// "status": "Success",
-						// "Id": "1",
-						// "CustId": "2",
-						// "CustomerName": "Reets",
-						// "Email": "reetesh.c.ocs@gmail.com",
-						// "Mobile": "1234567888",
-						// "Message": "this is our testing part please ignore
-						// it.........!!!",
-						// "AdminFeedback": "Approve"
-						// }]
-
 						String CustomerName = jo.getString("CustomerName");
 						String Email = jo.getString("Email");
 						String Mobile = jo.getString("Mobile");
@@ -138,5 +128,10 @@ public class CustomerReviewFragment extends BaseFragment {
 		// TODO Auto-generated method stub
 		Picasso.with(getActivity()).load(Commons.IMAGE_BASE_URL + pdto.getPropertyImage()).resize(100, 100)
 		.into(iv_thumb);
+	}
+
+	@Override
+	public void locationSelect(String location) {
+		tv_location.setText("Location :"+location);
 	}
 }

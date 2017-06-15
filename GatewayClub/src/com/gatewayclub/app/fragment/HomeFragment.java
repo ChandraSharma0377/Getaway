@@ -1,26 +1,5 @@
 package com.gatewayclub.app.fragment;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import com.gatewayclub.app.R;
-import com.gatewayclub.app.adapters.GridViewImgTxtAdapter;
-import com.gatewayclub.app.adapters.PropertySpinAdapter;
-import com.gatewayclub.app.adapters.LocationSpinAdapter;
-import com.gatewayclub.app.asynctask.AsyncProcess;
-import com.gatewayclub.app.helper.Commons;
-import com.gatewayclub.app.helper.ExpandableHeightGridView;
-import com.gatewayclub.app.helper.ShowAlertInformation;
-import com.gatewayclub.app.main.MainActivity;
-import com.gatewayclub.app.main.MainActivityOptions;
-import com.gatewayclub.app.pojos.GridItem;
-import com.gatewayclub.app.pojos.LocationDto;
-import com.gatewayclub.app.pojos.PropertyDto;
-import com.squareup.picasso.Picasso;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -38,6 +17,27 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.gatewayclub.app.R;
+import com.gatewayclub.app.adapters.GridViewImgTxtAdapter;
+import com.gatewayclub.app.adapters.LocationSpinAdapter;
+import com.gatewayclub.app.adapters.PropertySpinAdapter;
+import com.gatewayclub.app.asynctask.AsyncProcess;
+import com.gatewayclub.app.helper.Commons;
+import com.gatewayclub.app.helper.ExpandableHeightGridView;
+import com.gatewayclub.app.helper.ShowAlertInformation;
+import com.gatewayclub.app.main.MainActivity;
+import com.gatewayclub.app.main.MainActivityOptions;
+import com.gatewayclub.app.pojos.GridItem;
+import com.gatewayclub.app.pojos.LocationDto;
+import com.gatewayclub.app.pojos.PropertyDto;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 	private ProgressDialog progressDialog;
@@ -308,4 +308,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 		PropertySpinAdapter propertyAdapter = new PropertySpinAdapter(getActivity(), propertyList);
 		sp_property.setAdapter(propertyAdapter);
 	}
+
+
 }

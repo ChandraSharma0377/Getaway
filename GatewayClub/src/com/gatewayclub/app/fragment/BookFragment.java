@@ -997,5 +997,8 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
 	
 		return true;
 	}
-	
+	@Override
+	public void locationSelect(String location) {
+
+	}
 }

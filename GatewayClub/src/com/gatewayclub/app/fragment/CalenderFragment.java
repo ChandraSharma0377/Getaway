@@ -1,30 +1,6 @@
 
 package com.gatewayclub.app.fragment;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map.Entry;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import com.gatewayclub.app.R;
-import com.gatewayclub.app.asynctask.AsyncProcess;
-import com.gatewayclub.app.helper.Commons;
-import com.gatewayclub.app.helper.ShowAlertInformation;
-import com.gatewayclub.app.main.MainActivity;
-import com.gatewayclub.app.main.MainActivityOptions;
-import com.gatewayclub.app.pojos.CalanderDateDto;
-import com.gatewayclub.app.pojos.PropertyDto;
-import com.roomorama.caldroid.CaldroidFragment;
-import com.roomorama.caldroid.CaldroidListener;
-import com.squareup.picasso.Picasso;
-
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
@@ -42,6 +18,30 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.gatewayclub.app.R;
+import com.gatewayclub.app.asynctask.AsyncProcess;
+import com.gatewayclub.app.helper.Commons;
+import com.gatewayclub.app.helper.ShowAlertInformation;
+import com.gatewayclub.app.main.MainActivity;
+import com.gatewayclub.app.main.MainActivityOptions;
+import com.gatewayclub.app.pojos.CalanderDateDto;
+import com.gatewayclub.app.pojos.PropertyDto;
+import com.roomorama.caldroid.CaldroidFragment;
+import com.roomorama.caldroid.CaldroidListener;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
 
 public class CalenderFragment extends BaseFragment {
 
@@ -538,5 +538,9 @@ public class CalenderFragment extends BaseFragment {
 			e.printStackTrace();
 		}
 		return output;
+	}
+	@Override
+	public void locationSelect(String location) {
+
 	}
 }

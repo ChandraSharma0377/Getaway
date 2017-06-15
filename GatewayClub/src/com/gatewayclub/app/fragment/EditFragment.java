@@ -73,6 +73,7 @@ public class EditFragment extends BaseFragment implements View.OnClickListener {
     private int SUBMIT_RATE = 1;
     private int UPDATE_DATA = 2;
     private FacilityDto facilityDto;
+    private TextView tv_location;
 
     private final int CASE_BEDROOM = 0;
     private final int CASE_HALL = 1;
@@ -114,6 +115,7 @@ public class EditFragment extends BaseFragment implements View.OnClickListener {
         edt_weekdays = (EditText) view.findViewById(R.id.edt_weekdays);
         edt_extra_person = (EditText) view.findViewById(R.id.edt_extra_person);
         edt_weekend_holiday = (EditText) view.findViewById(R.id.edt_weekend_holiday);
+        tv_location =(TextView)view.findViewById(R.id.tv_location);
         btnNext.setOnClickListener(this);
         btnPrev.setOnClickListener(this);
         btn_submit.setOnClickListener(this);
@@ -212,6 +214,11 @@ public class EditFragment extends BaseFragment implements View.OnClickListener {
     @Override
     protected void propertySelected(PropertyDto pdto) {
         this.pdto = pdto;
+        callImageData();
+
+    }
+
+    private void callImageData() {
         if (MainActivity.getNetworkHelper().isOnline()) {
             HashMap<String, String> postDataParams = new HashMap<String, String>();
             postDataParams.put("ownerId", MainActivity.getMainScreenActivity().getUserID());
@@ -221,7 +228,6 @@ public class EditFragment extends BaseFragment implements View.OnClickListener {
         } else {
             ShowAlertInformation.showDialog(getActivity(), "Network error", getString(R.string.offline));
         }
-
     }
 
     private class GetImageTask extends AsyncProcess {
@@ -427,6 +433,7 @@ public class EditFragment extends BaseFragment implements View.OnClickListener {
                             ShowAlertInformation.showDialog(getActivity(), "Error", "Error while updating the data !!!");
                         }
                         progressDialog.dismiss();
+                        callImageData();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -862,5 +869,10 @@ public class EditFragment extends BaseFragment implements View.OnClickListener {
         }
        int pos = Arrays.asList(values).indexOf(value.trim());
         ((Spinner)sp).setSelection(pos);
+    }
+
+    @Override
+    public void locationSelect(String location) {
+        tv_location.setText(location);
     }
 }

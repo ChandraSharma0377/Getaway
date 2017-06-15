@@ -1,7 +1,12 @@
 
 package com.gatewayclub.app.fragment;
 
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.AdapterView;
 
 import com.gatewayclub.app.R;
 import com.gatewayclub.app.adapters.GridViewAdapter;
@@ -10,12 +15,7 @@ import com.gatewayclub.app.pojos.GridItemDto;
 import com.gatewayclub.app.pojos.PropertyDto;
 import com.gatewayclub.app.pojos.PropertyImageDto;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.AdapterView;
+import java.util.ArrayList;
 
 public class EditPhotoFragment extends BaseFragment {
 
@@ -76,5 +76,9 @@ public class EditPhotoFragment extends BaseFragment {
 	protected void propertySelected(PropertyDto pdto) {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public void locationSelect(String location) {
+
 	}
 }
