@@ -1,10 +1,5 @@
 package com.gatewayclub.app.adapters;
 
-import java.util.ArrayList;
-
-import com.gatewayclub.app.R;
-import com.gatewayclub.app.pojos.GridItem;
-
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,6 +8,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.gatewayclub.app.R;
+import com.gatewayclub.app.pojos.GridItem;
+
+import java.util.ArrayList;
 
 public class GridViewImgTxtAdapter extends BaseAdapter {
 

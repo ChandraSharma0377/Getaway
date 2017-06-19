@@ -50,6 +50,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 	private TextView tv_name,tv_pending,tv_total_count,tv_mobile;
 	private ArrayList<PropertyDto> propertyList = new ArrayList<PropertyDto>();
 	private ImageView iv_thumb;
+	private TextView tv_location;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle args) {
@@ -64,6 +65,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 		tv_mobile = (TextView) rootview.findViewById(R.id.tv_mobile);
 		tv_total_count = (TextView) rootview.findViewById(R.id.tv_total_count);
 		tv_pending = (TextView) rootview.findViewById(R.id.tv_pending);
+		tv_location =(TextView) rootview.findViewById(R.id.tv_location);
 		tv_name.setText("Welcome " + MainActivity.getMainScreenActivity().getUserName());
 		tv_mobile.setText( MainActivity.getMainScreenActivity().getMobileNo());
 		tv_total_count.setText("Total business till now : " + MainActivity.getMainScreenActivity().getApproveCount());
@@ -121,19 +123,25 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 					postDataParams.put("lmID", Commons.locationLists.get(position).getLocationID());
 					new LocationTask(postDataParams, false).execute(Commons.GET_PROPERTY_LIST);
 					sp_property.setEnabled(true);
+					tv_location.setText(getString(R.string.location)+Commons.locationLists.get(position).getLocationName()
+					+"\nYear - "+Commons.getCurrentYear());
 				} else {
 					sp_property.setEnabled(false);
 					initPropertySpinner();
+					tv_location.setText("");
 				}
 
 			}
 
 		});
 
-		// Spinner Drop down elements
-		HashMap<String, String> postDataParams = new HashMap<String, String>();
-		postDataParams.put("ownerId", MainActivity.getMainScreenActivity().getUserID());
-		new LocationTask(postDataParams, true).execute(Commons.GET_LOCATION_LIST);
+		if (MainActivity.getNetworkHelper().isOnline()) {
+			HashMap<String, String> postDataParams = new HashMap<String, String>();
+			postDataParams.put("ownerId", MainActivity.getMainScreenActivity().getUserID());
+			new LocationTask(postDataParams, true).execute(Commons.GET_LOCATION_LIST);
+		} else {
+			ShowAlertInformation.showNetworkDialog(getActivity());
+		}
 		initPropertySpinner();
 
 		return rootview;

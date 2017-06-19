@@ -104,7 +104,7 @@ public class AgentFragment extends BaseFragment {
 						postDataParams.put("contactPersonNo", contactno);
 						new AddAgentTask(postDataParams,AGENT).execute(Commons.ADD_AGENT);
 					} else {
-						ShowAlertInformation.showDialog(getActivity(), "Network error", getString(R.string.offline));
+                        ShowAlertInformation.showNetworkDialog(getActivity());
 					}
 				}
 

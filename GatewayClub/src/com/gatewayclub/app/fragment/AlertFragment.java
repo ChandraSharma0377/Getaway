@@ -58,6 +58,7 @@ public class AlertFragment extends BaseFragment {
 	}
 	@Override
 	public void locationSelect(String location) {
-		tv_location.setText("Location :"+location);
+		tv_location.setText(getString(R.string.location)+location
+				+"\nYear - "+Commons.getCurrentYear());
 	}
 }

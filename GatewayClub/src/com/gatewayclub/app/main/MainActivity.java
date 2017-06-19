@@ -1,13 +1,5 @@
 package com.gatewayclub.app.main;
 
-import java.util.HashMap;
-import java.util.Stack;
-
-import com.gatewayclub.app.R;
-import com.gatewayclub.app.fragment.HomeFragment;
-import com.gatewayclub.app.fragment.LoginFragment;
-import com.gatewayclub.app.helper.NetworkHelper;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,6 +15,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.gatewayclub.app.R;
+import com.gatewayclub.app.fragment.HomeFragment;
+import com.gatewayclub.app.fragment.LoginFragment;
+import com.gatewayclub.app.helper.NetworkHelper;
+
+import java.util.HashMap;
+import java.util.Stack;
 
 public class MainActivity extends ActionBarActivity {
 	private Boolean exit = false;

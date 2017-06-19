@@ -1,18 +1,18 @@
 package com.gatewayclub.app.adapters;
 
-import java.util.ArrayList;
-
-import com.gatewayclub.app.R;
-import com.gatewayclub.app.helper.Commons;
-import com.gatewayclub.app.pojos.PropertyImageDto;
-import com.squareup.picasso.Picasso;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+
+import com.gatewayclub.app.R;
+import com.gatewayclub.app.helper.Commons;
+import com.gatewayclub.app.pojos.PropertyImageDto;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class MyHorizontalScrollAdapter extends BaseAdapter {
 	private LayoutInflater mInflater;

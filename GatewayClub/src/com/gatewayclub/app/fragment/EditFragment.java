@@ -201,7 +201,7 @@ public class EditFragment extends BaseFragment implements View.OnClickListener {
                             new GetImageTask(postDataParams, SUBMIT_RATE).execute(Commons.UPDATE_RATES);
 
                         } else {
-                            ShowAlertInformation.showDialog(getActivity(), "Network error", getString(R.string.offline));
+                            ShowAlertInformation.showNetworkDialog(getActivity());
                         }
                     }
                 }
@@ -226,7 +226,7 @@ public class EditFragment extends BaseFragment implements View.OnClickListener {
             new GetImageTask(postDataParams, GET_IMAGE_LIST).execute(Commons.GET_BUNGLOWIMAGE_LIST);
 
         } else {
-            ShowAlertInformation.showDialog(getActivity(), "Network error", getString(R.string.offline));
+            ShowAlertInformation.showNetworkDialog(getActivity());
         }
     }
 
@@ -600,7 +600,7 @@ public class EditFragment extends BaseFragment implements View.OnClickListener {
                     new GetImageTask(postDataParams, UPDATE_DATA).execute(Commons.BASE_URL + url);
                     dialog.dismiss();
                 } else {
-                    ShowAlertInformation.showDialog(getActivity(), "Network error", getString(R.string.offline));
+                    ShowAlertInformation.showNetworkDialog(getActivity());
                 }
 
             }
@@ -873,6 +873,6 @@ public class EditFragment extends BaseFragment implements View.OnClickListener {
 
     @Override
     public void locationSelect(String location) {
-        tv_location.setText(location);
+        tv_location.setText(getString(R.string.location)+location);
     }
 }

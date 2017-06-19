@@ -51,13 +51,13 @@ public class CalenderFragment extends BaseFragment {
 	private EditText edt_remark,edt_noofadult, edt_noofchildren;
 	private CaldroidFragment caldroidFragment;
 	private SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy");
-	String previouskey = "";
-	String currentkey = "";
+	private String previouskey = "";
+	private String currentkey = "";
 	private CalanderDateDto selectedcdd;
 	private int ACCEPT = 0;
 	private int REJECT = 1;
 	private int SEND_MSG=2;
-
+	private TextView tv_location;
 	private HashMap<String, HashMap<Date, CalanderDateDto>> cdata = new HashMap<>();
 
 	@Override
@@ -72,10 +72,10 @@ public class CalenderFragment extends BaseFragment {
 		edt_noofadult = (EditText) view.findViewById(R.id.edt_noofadult);
 		edt_noofchildren = (EditText) view.findViewById(R.id.edt_noofchildren);
 		tv_booking_done = (TextView) view.findViewById(R.id.tv_booking_done);
-		tv_booking_done.setText(Html.fromHtml("<b> Booking done by</b>  <font color=\"#00ADEF\">GATEWAY CLUB</font>"));
+		tv_booking_done.setText(Html.fromHtml("<b> Booking done by</b>  <font color=\"#00ADEF\">GETAWAY CLUB</font>"));
 		tv_booking_info = (TextView) view.findViewById(R.id.tv_booking_info);
 		tv_booking_info.setText(Html.fromHtml("<b> Booking info</b> <br/> payment, tax and comission details "));
-
+		tv_location =(TextView)view.findViewById(R.id.tv_location);
 		tv_start_date = (TextView) view.findViewById(R.id.tv_start_date);
 		tv_end_date = (TextView) view.findViewById(R.id.tv_end_date);
 		btn_approve.setOnClickListener(new OnClickListener() {
@@ -99,7 +99,7 @@ public class CalenderFragment extends BaseFragment {
 								e.printStackTrace();
 							}
 						} else {
-							ShowAlertInformation.showDialog(getActivity(), "Network error", getString(R.string.offline));
+							ShowAlertInformation.showNetworkDialog(getActivity());
 						}
 					}else{
 						ShowAlertInformation.showDialog(getActivity(), "Error", "Not Allow to Approved");
@@ -133,8 +133,7 @@ public class CalenderFragment extends BaseFragment {
 								e.printStackTrace();
 							}
 						} else {
-							ShowAlertInformation.showDialog(getActivity(), "Network error",
-									getString(R.string.offline));
+							ShowAlertInformation.showNetworkDialog(getActivity());
 						}
 					}
 				} else {
@@ -531,7 +530,7 @@ public class CalenderFragment extends BaseFragment {
 		try {
 			if(date.contains(" ")){
 			String as = date.split(" ")[0];
-			String sd[] = as.split("/");
+			String sd[] = as.split("-");
 			output= sd[1] + "/" + sd[0] + "/" + sd[2];
 			}
 			
@@ -542,6 +541,10 @@ public class CalenderFragment extends BaseFragment {
 	}
 	@Override
 	public void locationSelect(String location) {
-
+		tv_location.setText("Location : " + location
+				+ "\nMonth - " + Commons.getCurrentMonth());
+//				+ " \nWeek Days Rates-" + prRatePerNight + "\nWeek End Rates-"
+//				+ WeekendRate + "\nMinimum No of Adults-" + pdto.getPropertymin_capacity()
+//				+ "\nMaximum No Of Adults-" + pdto.getPropertymax_capacity());
 	}
 }
