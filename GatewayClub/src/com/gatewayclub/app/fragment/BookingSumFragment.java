@@ -109,7 +109,7 @@ public class BookingSumFragment extends BaseFragment implements OnClickListener 
 					postDataParams.put("statusVal", "Approved");
 					new GetBookingTask(postDataParams, ACCEPT).execute(Commons.BOOKING_SUMMARY);
 				} else {
-					ShowAlertInformation.showDialog(getActivity(), "Network error", getString(R.string.offline));
+					ShowAlertInformation.showNetworkDialog(getActivity());
 				}
 			}
 		} else if (tv.getId() == R.id.tv_month2 || tv.getId() == R.id.tv_year2) {
@@ -122,7 +122,7 @@ public class BookingSumFragment extends BaseFragment implements OnClickListener 
 					postDataParams.put("statusVal", "Reject");
 					new GetBookingTask(postDataParams, REJECT).execute(Commons.BOOKING_SUMMARY);
 				} else {
-					ShowAlertInformation.showDialog(getActivity(), "Network error", getString(R.string.offline));
+					ShowAlertInformation.showNetworkDialog(getActivity());
 				}
 			}
 		}

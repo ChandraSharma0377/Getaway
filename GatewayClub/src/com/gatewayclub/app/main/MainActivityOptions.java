@@ -1,7 +1,13 @@
 package com.gatewayclub.app.main;
 
-import java.util.HashMap;
-import java.util.Stack;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.TextView;
 
 import com.gatewayclub.app.R;
 import com.gatewayclub.app.fragment.AgentFragment;
@@ -11,17 +17,10 @@ import com.gatewayclub.app.fragment.BookingSumFragment;
 import com.gatewayclub.app.fragment.CalenderFragment;
 import com.gatewayclub.app.fragment.CustomerReviewFragment;
 import com.gatewayclub.app.fragment.EditFragment;
-import com.gatewayclub.app.fragment.HomeFragment;
 import com.gatewayclub.app.helper.NetworkHelper;
 
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.TextView;
+import java.util.HashMap;
+import java.util.Stack;
 
 public class MainActivityOptions extends ActionBarActivity {
 

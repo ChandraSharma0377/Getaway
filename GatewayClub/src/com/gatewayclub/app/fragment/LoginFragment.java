@@ -1,15 +1,5 @@
 package com.gatewayclub.app.fragment;
 
-import java.util.HashMap;
-
-import org.json.JSONObject;
-
-import com.gatewayclub.app.R;
-import com.gatewayclub.app.asynctask.AsyncProcess;
-import com.gatewayclub.app.helper.Commons;
-import com.gatewayclub.app.helper.ShowAlertInformation;
-import com.gatewayclub.app.main.MainActivity;
-
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -24,6 +14,16 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+
+import com.gatewayclub.app.R;
+import com.gatewayclub.app.asynctask.AsyncProcess;
+import com.gatewayclub.app.helper.Commons;
+import com.gatewayclub.app.helper.ShowAlertInformation;
+import com.gatewayclub.app.main.MainActivity;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
 
 public class LoginFragment extends Fragment {
 
@@ -77,7 +77,7 @@ public class LoginFragment extends Fragment {
 						postDataParams.put("uPassword", pwd);
 						new LoginTask(postDataParams).execute(Commons.LOGIN_URL);
 					} else {
-						ShowAlertInformation.showDialog(getActivity(), "Network error", getString(R.string.offline));
+						ShowAlertInformation.showNetworkDialog(getActivity());
 					}
 				}
 

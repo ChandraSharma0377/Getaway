@@ -29,7 +29,6 @@ public class Commons {
 	public static final String BOOKING_SUMMARY = BASE_URL + "getStatusCount";
 	public static final String UPDATE_RATES = BASE_URL + "updateRates";
 
-
 	public static ArrayList<LocationDto> locationLists = new ArrayList<>();
 
 	public static boolean isValidEmail(CharSequence target) {
@@ -118,5 +117,12 @@ public class Commons {
 		cal.set(Calendar.MONTH, month - 1);
 		String month_name = month_date.format(cal.getTime());
 		return month_name;
+	}
+
+	public static String getCurrentMonth(){
+		return  (String) android.text.format.DateFormat.format("MMMM", new Date());
+	}
+	public static String getCurrentYear(){
+		return  (String) android.text.format.DateFormat.format("yyyy", new Date());
 	}
 }

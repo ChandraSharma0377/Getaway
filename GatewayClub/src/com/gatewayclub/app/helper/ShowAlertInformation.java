@@ -53,4 +53,8 @@ public class ShowAlertInformation {
 
 		alertDialog.show();
 	}
+
+	public static void showNetworkDialog(Context context){
+		ShowAlertInformation.showDialog(context, "Device offline", context.getString(R.string.offline));
+	}
 }

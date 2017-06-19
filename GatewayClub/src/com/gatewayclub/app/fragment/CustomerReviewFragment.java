@@ -43,9 +43,13 @@ public class CustomerReviewFragment extends BaseFragment {
 		tv_alert_detail.setText("");
 		addView(view);
 
-		HashMap<String, String> postDataParams = new HashMap<String, String>();
-		postDataParams.put("ownerId", MainActivity.getMainScreenActivity().getUserID());
-		new ReviewTask(postDataParams).execute(Commons.GET_CUSTOMER_REVIEW);
+		if (MainActivity.getNetworkHelper().isOnline()) {
+			HashMap<String, String> postDataParams = new HashMap<String, String>();
+			postDataParams.put("ownerId", MainActivity.getMainScreenActivity().getUserID());
+			new ReviewTask(postDataParams).execute(Commons.GET_CUSTOMER_REVIEW);
+		} else {
+			ShowAlertInformation.showNetworkDialog(getActivity());
+		}
 		return rootview;
 	}
 
@@ -132,6 +136,6 @@ public class CustomerReviewFragment extends BaseFragment {
 
 	@Override
 	public void locationSelect(String location) {
-		tv_location.setText("Location :"+location);
+		tv_location.setText(getString(R.string.location)+location);
 	}
 }

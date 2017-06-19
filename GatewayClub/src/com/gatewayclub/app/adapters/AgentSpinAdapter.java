@@ -1,11 +1,5 @@
 package com.gatewayclub.app.adapters;
 
-import java.util.ArrayList;
-
-import com.gatewayclub.app.R;
-import com.gatewayclub.app.pojos.AgentDto;
-import com.gatewayclub.app.pojos.PropertyDto;
-
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,6 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.gatewayclub.app.R;
+import com.gatewayclub.app.pojos.AgentDto;
+
+import java.util.ArrayList;
 
 public class AgentSpinAdapter extends BaseAdapter {
 

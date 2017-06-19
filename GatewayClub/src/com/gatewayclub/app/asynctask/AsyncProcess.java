@@ -1,5 +1,7 @@
 package com.gatewayclub.app.asynctask;
 
+import android.os.AsyncTask;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -15,8 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
-
-import android.os.AsyncTask;
 
 public class AsyncProcess extends AsyncTask<String, Void, String> {
 
