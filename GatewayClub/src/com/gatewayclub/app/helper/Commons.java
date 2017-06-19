@@ -1,18 +1,18 @@
 package com.gatewayclub.app.helper;
 
 
+import com.gatewayclub.app.main.MainActivity;
+import com.gatewayclub.app.pojos.LocationDto;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-import com.gatewayclub.app.main.MainActivity;
-import com.gatewayclub.app.pojos.LocationDto;
-
 public class Commons {
 
-	private static final String BASE_URL = "http://www.thegetawayclub.in/Test_web_application/WebService1.asmx/";
+	public static final String BASE_URL = "http://www.thegetawayclub.in/Test_web_application/WebService1.asmx/";
 	public static final String LOGIN_URL = BASE_URL + "GetUserInfo";
 	public static final String GET_CALANDER_DETAILS = BASE_URL + "getbookinginfo";
 	public static final String GET_CUSTOMER_REVIEW = BASE_URL + "getFeedback";
@@ -27,6 +27,8 @@ public class Commons {
 	public static final String GET_CUSTOMER_DETAILS = BASE_URL + "getCustomerDetails";
 	public static final String UPDATE_PROPERTY = BASE_URL + "updateStatus";
 	public static final String BOOKING_SUMMARY = BASE_URL + "getStatusCount";
+	public static final String UPDATE_RATES = BASE_URL + "updateRates";
+
 
 	public static ArrayList<LocationDto> locationLists = new ArrayList<>();
 

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ll_style">
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/tv_style"
+        android:layout_weight=".4" />
+
+    <RadioGroup
+        android:id="@+id/rg_yesno"
+        style="@style/tv_style"
+        android:layout_weight=".6"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <RadioButton
+            android:id="@+id/rb_yes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:button="@drawable/customdrawablecheckbox"
+            android:padding="1sp"
+            android:text="Yes" />
+
+        <RadioButton
+            android:id="@+id/rb_no"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:button="@drawable/customdrawablecheckbox"
+            android:padding="1sp"
+            android:text="No" />
+    </RadioGroup>
+
+    <Spinner
+        android:id="@+id/sp_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".6"
+        android:background="@drawable/spinner_bg"
+        android:divider="@android:color/black"
+        android:dividerHeight="5dp"
+        android:entries="@array/array_number"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:visibility="gone" />
+
+    <Spinner
+        android:id="@+id/sp_size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".6"
+        android:background="@drawable/spinner_bg"
+        android:divider="@android:color/black"
+        android:dividerHeight="5dp"
+        android:entries="@array/array_size"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:visibility="gone" />
+</LinearLayout>
+

@@ -1,30 +1,6 @@
 
 package com.gatewayclub.app.fragment;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map.Entry;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import com.gatewayclub.app.R;
-import com.gatewayclub.app.asynctask.AsyncProcess;
-import com.gatewayclub.app.helper.Commons;
-import com.gatewayclub.app.helper.ShowAlertInformation;
-import com.gatewayclub.app.main.MainActivity;
-import com.gatewayclub.app.main.MainActivityOptions;
-import com.gatewayclub.app.pojos.CalanderDateDto;
-import com.gatewayclub.app.pojos.PropertyDto;
-import com.roomorama.caldroid.CaldroidFragment;
-import com.roomorama.caldroid.CaldroidListener;
-import com.squareup.picasso.Picasso;
-
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
@@ -42,6 +18,30 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.gatewayclub.app.R;
+import com.gatewayclub.app.asynctask.AsyncProcess;
+import com.gatewayclub.app.helper.Commons;
+import com.gatewayclub.app.helper.ShowAlertInformation;
+import com.gatewayclub.app.main.MainActivity;
+import com.gatewayclub.app.main.MainActivityOptions;
+import com.gatewayclub.app.pojos.CalanderDateDto;
+import com.gatewayclub.app.pojos.PropertyDto;
+import com.roomorama.caldroid.CaldroidFragment;
+import com.roomorama.caldroid.CaldroidListener;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
 
 public class CalenderFragment extends BaseFragment {
 
@@ -321,13 +321,14 @@ public class CalenderFragment extends BaseFragment {
 		};
 	}
 
-	private void setCalanderStatus(String str_date, String end_date, String status, CalanderDateDto cdd) {
+	private void setCalanderStatus(String str_date1, String end_date1, String status, CalanderDateDto cdd) {
 		List<Date> dates = new ArrayList<Date>();
 
 		// String str_date ="27/08/2010";
 		// String end_date ="02/09/2010";
-
-		DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+		String str_date = str_date1.replaceAll("-","/");
+		String end_date = end_date1.replaceAll("-","/");
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		try {
 			Date startDate = (Date) formatter.parse(str_date);
 			Date endDate = (Date) formatter.parse(end_date);
@@ -538,5 +539,9 @@ public class CalenderFragment extends BaseFragment {
 			e.printStackTrace();
 		}
 		return output;
+	}
+	@Override
+	public void locationSelect(String location) {
+
 	}
 }

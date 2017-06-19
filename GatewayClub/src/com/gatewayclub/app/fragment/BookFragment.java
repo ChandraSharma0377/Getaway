@@ -536,9 +536,10 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
 								ExtraWeekendRate = jo.getString("ExtraWeekendRate");
 								ExtraHolidayRate = jo.getString("ExtraHolidayRate");
 								FoodRatePerPerson = jo.getString("FoodRatePerPerson");
+								String monthname=(String)android.text.format.DateFormat.format("MMMM", new Date());
 								tv_location.setText("Location : " + pdto.getPropertyName()
-										+ "\nMonth - Feb \nWeek Days Rates-" + WeekendRate + "\nWeek End Rates-"
-										+ ExtraWeekendRate + "\nMinimum No of Adults-" + pdto.getPropertymin_capacity()
+										+ "\nMonth - "+monthname+" \nWeek Days Rates-" + prRatePerNight + "\nWeek End Rates-"
+										+ WeekendRate + "\nMinimum No of Adults-" + pdto.getPropertymin_capacity()
 										+ "\nMaximum No Of Adults-" + pdto.getPropertymax_capacity());
 
 							} else {
@@ -602,7 +603,7 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
 					System.out.println("property rate result is : " + (result == null ? "" : result));
 					progressDialog1.dismiss();
 				} else {
-					Log.i("get customer info  response", result == null ? "" : result);
+					Log.i("customer info response", result == null ? "" : result);
 					ShowAlertInformation.showDialog(getActivity(), "Error", "Error");
 					progressDialog1.dismiss();
 				}
@@ -839,13 +840,14 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
 		};
 	}
 
-	private void setCalanderStatus(String str_date, String end_date, String status, CalanderDateDto cdd) {
+	private void setCalanderStatus(String str_date1, String end_date1, String status, CalanderDateDto cdd) {
 		List<Date> dates = new ArrayList<Date>();
 
 		// String str_date ="27/08/2010";
 		// String end_date ="02/09/2010";
-
-		DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+		String str_date = str_date1.replaceAll("-","/");
+		String end_date = end_date1.replaceAll("-","/");
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		try {
 			Date startDate = (Date) formatter.parse(str_date);
 			Date endDate = (Date) formatter.parse(end_date);
@@ -934,7 +936,6 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
 
 		// String str_date ="27/08/2010";
 		// String end_date ="02/09/2010";
-
 		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		try {
 			Date startDate = (Date) formatter.parse(fromdate);//sd[1]+"/"+sd[0]+"/"+sd[2]);
@@ -996,5 +997,8 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
 	
 		return true;
 	}
-	
+	@Override
+	public void locationSelect(String location) {
+
+	}
 }

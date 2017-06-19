@@ -1,17 +1,6 @@
 
 package com.gatewayclub.app.fragment;
 
-import java.util.HashMap;
-
-import org.json.JSONObject;
-
-import com.gatewayclub.app.R;
-import com.gatewayclub.app.asynctask.AsyncProcess;
-import com.gatewayclub.app.helper.Commons;
-import com.gatewayclub.app.helper.ShowAlertInformation;
-import com.gatewayclub.app.main.MainActivity;
-import com.gatewayclub.app.pojos.PropertyDto;
-
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -23,6 +12,17 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.gatewayclub.app.R;
+import com.gatewayclub.app.asynctask.AsyncProcess;
+import com.gatewayclub.app.helper.Commons;
+import com.gatewayclub.app.helper.ShowAlertInformation;
+import com.gatewayclub.app.main.MainActivity;
+import com.gatewayclub.app.pojos.PropertyDto;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
 
 public class AgentFragment extends BaseFragment {
 
@@ -122,6 +122,11 @@ public class AgentFragment extends BaseFragment {
 	@Override
 	protected void propertySelected(PropertyDto pdto) {
 		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void locationSelect(String location) {
 
 	}
 
