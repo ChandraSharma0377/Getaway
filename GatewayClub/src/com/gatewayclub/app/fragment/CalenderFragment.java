@@ -72,7 +72,7 @@ public class CalenderFragment extends BaseFragment {
 		edt_noofadult = (EditText) view.findViewById(R.id.edt_noofadult);
 		edt_noofchildren = (EditText) view.findViewById(R.id.edt_noofchildren);
 		tv_booking_done = (TextView) view.findViewById(R.id.tv_booking_done);
-		tv_booking_done.setText(Html.fromHtml("<b> Booking done by</b>  <font color=\"#00ADEF\">GATEWAY CLUB</font>"));
+		tv_booking_done.setText(Html.fromHtml("<b> Booking done by</b>  <font color=\"#00ADEF\">GETAWAY CLUB</font>"));
 		tv_booking_info = (TextView) view.findViewById(R.id.tv_booking_info);
 		tv_booking_info.setText(Html.fromHtml("<b> Booking info</b> <br/> payment, tax and comission details "));
 
