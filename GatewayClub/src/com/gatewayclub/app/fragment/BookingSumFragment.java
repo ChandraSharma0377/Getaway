@@ -3,6 +3,7 @@ package com.gatewayclub.app.fragment;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,18 +11,24 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.gatewayclub.app.R;
+import com.gatewayclub.app.adapters.AgentSpinAdapter;
 import com.gatewayclub.app.asynctask.AsyncProcess;
 import com.gatewayclub.app.helper.Commons;
 import com.gatewayclub.app.helper.ShowAlertInformation;
 import com.gatewayclub.app.main.MainActivity;
+import com.gatewayclub.app.pojos.AgentDto;
 import com.gatewayclub.app.pojos.PropertyDto;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BookingSumFragment extends BaseFragment implements OnClickListener {
@@ -29,9 +36,11 @@ public class BookingSumFragment extends BaseFragment implements OnClickListener 
 	private RelativeLayout ll_month1, ll_year1, ll_month2, ll_year2;
 	private TextView tv_month1, tv_year1, tv_month2, tv_year2;
 	private TextView edt_amount1, edt_amount2, edt_count1, edt_count2;
+	private Spinner sp_booked_cancel,sp_booked_confirm;
 	private int ACCEPT = 0;
 	private int REJECT = 1;
-
+	private int AGENT_CALL = 2;
+	private ArrayList<AgentDto> agentlist = new ArrayList<AgentDto>();
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle args) {
 		super.onCreateView(inflater, container, args);
@@ -57,7 +66,52 @@ public class BookingSumFragment extends BaseFragment implements OnClickListener 
 		ll_month2.setOnClickListener(this);
 		ll_year2.setOnClickListener(this);
 		iv_book_sum.setBackgroundResource(R.drawable.book_sum_select);
+
+		sp_booked_confirm = (Spinner) view.findViewById(R.id.sp_booked_confirm);
+		sp_booked_cancel = (Spinner) view.findViewById(R.id.sp_booked_cancel);
+		sp_booked_confirm.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				TextView selectedText = (TextView) parent.getChildAt(0);
+				if (selectedText != null) {
+					selectedText.setTextColor(Color.WHITE);
+				}
+			}
+
+		});
+		sp_booked_cancel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				TextView selectedText = (TextView) parent.getChildAt(0);
+				if (selectedText != null) {
+					selectedText.setTextColor(Color.WHITE);
+				}
+			}
+
+		});
 		hideSpinner();
+		if (MainActivity.getNetworkHelper().isOnline()) {
+			HashMap<String, String> postDataParams = new HashMap<String, String>();
+			postDataParams.put("ownerId", MainActivity.getMainScreenActivity().getUserID());
+			new GetBookingTask(postDataParams, AGENT_CALL).execute(Commons.GET_AGENT_LIST);
+
+		} else {
+			ShowAlertInformation.showNetworkDialog(getActivity());
+		}
 		addView(view);
 		return rootview;
 	}
@@ -106,6 +160,10 @@ public class BookingSumFragment extends BaseFragment implements OnClickListener 
 					postDataParams.put("pmOwnerId", MainActivity.getMainScreenActivity().getUserID());
 					postDataParams.put("month", tv_month1.getText().toString());
 					postDataParams.put("year", tv_year1.getText().toString());
+					if (sp_booked_confirm.getSelectedItemPosition() == 0)
+						postDataParams.put("agentId", MainActivity.getMainScreenActivity().getUserID());
+					else
+						postDataParams.put("agentId", agentlist.get(sp_booked_confirm.getSelectedItemPosition()).getAgentID());
 					postDataParams.put("statusVal", "Approved");
 					new GetBookingTask(postDataParams, ACCEPT).execute(Commons.BOOKING_SUMMARY);
 				} else {
@@ -119,6 +177,10 @@ public class BookingSumFragment extends BaseFragment implements OnClickListener 
 					postDataParams.put("pmOwnerId", MainActivity.getMainScreenActivity().getUserID());
 					postDataParams.put("month", tv_month2.getText().toString());
 					postDataParams.put("year", tv_year2.getText().toString());
+					if (sp_booked_cancel.getSelectedItemPosition() == 0)
+						postDataParams.put("agentId", MainActivity.getMainScreenActivity().getUserID());
+					else
+						postDataParams.put("agentId", agentlist.get(sp_booked_cancel.getSelectedItemPosition()).getAgentID());
 					postDataParams.put("statusVal", "Reject");
 					new GetBookingTask(postDataParams, REJECT).execute(Commons.BOOKING_SUMMARY);
 				} else {
@@ -217,6 +279,45 @@ public class BookingSumFragment extends BaseFragment implements OnClickListener 
 					progressDialog.dismiss();
 				}
 			}
+			if (senario == AGENT_CALL) {
+				if (200 == responseCode) {
+
+					String value = result.replace("\\", "");
+					if (value.length() > 2)
+						value = value.substring(1, value.length() - 1);
+					try {
+						JSONArray jaaray = new JSONArray(value);
+						agentlist.clear();
+						for (int i = 0; i < jaaray.length(); i++) {
+							try {
+								JSONObject jo = jaaray.getJSONObject(i);
+								agentlist.add(new AgentDto(jo.getString("Id"), jo.getString("emailId")));
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+						agentlist.add(0, new AgentDto("-1", "Self"));
+						initAgentSpinner();
+						progressDialog.dismiss();
+					} catch (Exception e) {
+						e.printStackTrace();
+						agentlist.clear();
+						agentlist.add(0, new AgentDto("-1", "Self"));
+						initAgentSpinner();
+						ShowAlertInformation.showDialog(getActivity(), "Error", "Error in data !!!");
+						progressDialog.dismiss();
+					}
+					System.out.println("AgentTask result is : " + (result == null ? "" : result));
+					progressDialog.dismiss();
+				} else {
+					agentlist.clear();
+					agentlist.add(0, new AgentDto("-1", "Self"));
+					initAgentSpinner();
+					Log.i("AgentTask response", result == null ? "" : result);
+					ShowAlertInformation.showDialog(getActivity(), "Error", "Error");
+					progressDialog.dismiss();
+				}
+			}
 
 		}
 
@@ -234,6 +335,12 @@ public class BookingSumFragment extends BaseFragment implements OnClickListener 
 	}
 	@Override
 	public void locationSelect(String location) {
+
+	}
+	private void initAgentSpinner() {
+		AgentSpinAdapter propertyAdapter = new AgentSpinAdapter(getActivity(), agentlist);
+		sp_booked_cancel.setAdapter(propertyAdapter);
+		sp_booked_confirm.setAdapter(propertyAdapter);
 
 	}
 }

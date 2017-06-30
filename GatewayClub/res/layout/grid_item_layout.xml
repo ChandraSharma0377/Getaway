@@ -37,13 +37,13 @@
             android:textSize="12sp" />
 
         <Button
-            android:id="@+id/btn_remove"
+            android:id="@+id/btn_upload"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_weight=".5"
             android:background="@drawable/blue_bg"
-            android:text="@string/remove"
+            android:text="@string/upload"
             android:textColor="@android:color/white"
             android:textSize="12sp" />
     </LinearLayout>

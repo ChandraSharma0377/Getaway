@@ -59,6 +59,7 @@
     <string name="confirm">CONFIRM</string>
     <string name="change">Change</string>
     <string name="remove">Remove</string>
+    <string name="upload">Upload</string>
     <string name="location">Location - </string>
 
 </resources>

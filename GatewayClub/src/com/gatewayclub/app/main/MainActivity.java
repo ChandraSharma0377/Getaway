@@ -9,7 +9,7 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,7 +24,7 @@ import com.gatewayclub.app.helper.NetworkHelper;
 import java.util.HashMap;
 import java.util.Stack;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 	private Boolean exit = false;
 	private static MainActivity mainActivity;
 	private static NetworkHelper networkHelper;
@@ -292,4 +292,6 @@ public class MainActivity extends ActionBarActivity {
 	protected void onResume() {
 		super.onResume();
 	}
+
+
 }

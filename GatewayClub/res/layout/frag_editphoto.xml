@@ -78,7 +78,7 @@
             style="@style/btn_style"
             android:layout_width="0dp"
             android:layout_marginRight="5dp"
-            android:layout_weight=".5"
+            android:layout_weight="1"
             android:text="@string/addmore" />
 
         <Button
@@ -87,6 +87,7 @@
             android:layout_width="0dp"
             android:layout_marginLeft="5dp"
             android:layout_weight=".5"
+            android:visibility="gone"
             android:text="@string/confirm" />
     </LinearLayout>
 

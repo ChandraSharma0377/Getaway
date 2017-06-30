@@ -44,7 +44,7 @@ public class MyHorizontalScrollAdapter extends BaseAdapter {
 			holder = (Holder) convertView.getTag();
 		}
 
-		Picasso.with(context).load(Commons.IMAGE_BASE_URL+imalelist.get(position).getPropertyImageUrl()).resize(100,100).into(holder.ivscroll);
+		Picasso.with(context).load(Commons.IMAGE_BASE_URL+imalelist.get(position).getPropertyImageUrl()).placeholder(R.drawable.placeholder).resize(100,100).into(holder.ivscroll);
 		convertView.setId(position);
 
 		return convertView;

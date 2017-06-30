@@ -1,10 +1,15 @@
 package com.gatewayclub.app.main;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
@@ -22,11 +27,11 @@ import com.gatewayclub.app.helper.NetworkHelper;
 import java.util.HashMap;
 import java.util.Stack;
 
-public class MainActivityOptions extends ActionBarActivity {
+public class MainActivityOptions extends AppCompatActivity {
 
 	private static MainActivityOptions mainActivity;
 	private static NetworkHelper networkHelper;
-
+	private final int STORAGE_PERMISSION_CODE = 100;
 	protected Fragment mFrag;
 	protected Fragment cFrag, rootFragment;
 	private HashMap<String, Stack<Fragment>> mFragmentsStack;
@@ -185,5 +190,31 @@ public class MainActivityOptions extends ActionBarActivity {
 			break;
 		}
 		return fr;
+	}
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.main_fragment);
+		fragment.onActivityResult(requestCode, resultCode, data);
+	}
+	public boolean isExternalStoragePermissionAllowed() {
+		//Getting the permission status
+		int result_read = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+		int result_write = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+		//If permission is granted returning true
+		if (result_read == PackageManager.PERMISSION_GRANTED &&result_write == PackageManager.PERMISSION_GRANTED )
+			return true;
+		//If permission is not granted returning false
+		return false;
+	}
+
+
+	public void requestExternalStoragePermission() {
+		if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)||
+				ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+			//Provide an additional info to the user if the permission was not granted
+		}
+		//External storage has not been granted yet. Request it directly.
+		ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+
 	}
 }

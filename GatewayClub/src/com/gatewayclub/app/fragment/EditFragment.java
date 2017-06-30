@@ -35,6 +35,7 @@ import com.gatewayclub.app.helper.ExpandableHeightGridView;
 import com.gatewayclub.app.helper.MyHorizontalScrollview;
 import com.gatewayclub.app.helper.ShowAlertInformation;
 import com.gatewayclub.app.main.MainActivity;
+import com.gatewayclub.app.main.MainActivityOptions;
 import com.gatewayclub.app.pojos.Bedroom;
 import com.gatewayclub.app.pojos.FacilityDto;
 import com.gatewayclub.app.pojos.Food;
@@ -180,8 +181,12 @@ public class EditFragment extends BaseFragment implements View.OnClickListener {
                 break;
 
             case R.id.btn_editphoto:
-                MainActivity.getMainScreenActivity().changeNavigationContentFragment(new EditPhotoFragment(propertyimagelist), true);
-                break;
+                if(null!=pdto) {
+                    MainActivityOptions.getMainScreenActivity().changeNavigationContentFragment(new EditPhotoFragment(propertyimagelist,pdto.getPropertyID()), true);
+                }else{
+                    Toast.makeText(getActivity(),"Please select Property first. ",Toast.LENGTH_LONG).show();
+                }
+                 break;
             case R.id.btn_submit:
 
                 if ((edt_extra_person.getText().toString().trim().equals(prExtraPersonRate) && edt_weekdays.getText().toString().trim().equals(prRatePerNight)
@@ -398,9 +403,9 @@ public class EditFragment extends BaseFragment implements View.OnClickListener {
                         hall.setPhdTerraceVerandah(jobjhall.getString("PhdTerraceVerandah"));
                         facilityDto.setHall(hall);
 
-                        edt_weekdays.setText(prRatePerNight);
-                        edt_extra_person.setText(prExtraPersonRate);
-                        edt_weekend_holiday.setText(WeekendRate);
+                        edt_weekdays.setText(""+Math.round(Integer.parseInt(prRatePerNight)));
+                        edt_extra_person.setText(""+Math.round(Integer.parseInt(prExtraPersonRate)));
+                        edt_weekend_holiday.setText(""+Math.round(Integer.parseInt(WeekendRate)));
                         MyHorizontalScrollAdapter adapter = new MyHorizontalScrollAdapter(getActivity(), propertyimagelist);
                         myHorizontalScrollview.setAdapter(getActivity(), adapter);
                         progressDialog.dismiss();

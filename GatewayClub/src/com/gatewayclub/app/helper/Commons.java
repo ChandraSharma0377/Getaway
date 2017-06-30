@@ -29,6 +29,11 @@ public class Commons {
 	public static final String BOOKING_SUMMARY = BASE_URL + "getStatusCount";
 	public static final String UPDATE_RATES = BASE_URL + "updateRates";
 
+
+	public static final String UPLOAD_IMAGE=BASE_URL +"uploadImage";
+	public static final String UPLOAD_NEW_IMAGE=BASE_URL +"uploadNewImage";
+
+
 	public static ArrayList<LocationDto> locationLists = new ArrayList<>();
 
 	public static boolean isValidEmail(CharSequence target) {

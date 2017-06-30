@@ -9,13 +9,9 @@ public class GridItemDto {
     private String title;
     private String image;
     private String[] facility;
+    private String imageID;
     public GridItemDto() {
 
-    }
-
-    public GridItemDto(String title, String image) {
-        this.title = title;
-        this.image = image;
     }
 
     public String getTitle() {
@@ -42,12 +38,21 @@ public class GridItemDto {
         this.facility = facility;
     }
 
+    public String getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(String imageID) {
+        this.imageID = imageID;
+    }
+
     @Override
     public String toString() {
         return "GridItemDto{" +
                 "title='" + title + '\'' +
                 ", image='" + image + '\'' +
                 ", facility=" + Arrays.toString(facility) +
+                ", imageID='" + imageID + '\'' +
                 '}';
     }
 }
