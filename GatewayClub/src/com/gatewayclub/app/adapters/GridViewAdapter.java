@@ -1,6 +1,7 @@
 package com.gatewayclub.app.adapters;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -38,8 +39,12 @@ public class GridViewAdapter extends ArrayAdapter<GridItemDto> {
 	private int layoutResourceId;
 	private ArrayList<GridItemDto> mGridData = new ArrayList<GridItemDto>();
 	private ImageView iv;
-	private int pos = -1;
+	private int position_upload = -1;
+	private int position_delete=-1;
 	private Bitmap bitmap;
+
+	private int UPLOAD = 0;
+	private int DELETE = 1;
 
 	public GridViewAdapter(Context mContext, int layoutResourceId, ArrayList<GridItemDto> mGridData) {
 		super(mContext, layoutResourceId, mGridData);
@@ -66,6 +71,7 @@ public class GridViewAdapter extends ArrayAdapter<GridItemDto> {
 			if(layoutResourceId==R.layout.grid_item_layout){
 				holder.btn_change = (Button) row.findViewById(R.id.btn_change);
 				holder.btn_upload = (Button) row.findViewById(R.id.btn_upload);
+				holder.iv_delete = (ImageView) row.findViewById(R.id.iv_delete);
 			}
 			row.setTag(holder);
 		} else {
@@ -87,7 +93,7 @@ public class GridViewAdapter extends ArrayAdapter<GridItemDto> {
 						intent.setAction(Intent.ACTION_PICK);
 						((Activity) mContext).startActivityForResult(Intent.createChooser(intent, "Select Image"), 111);
 						iv=holder.imageView;
-						pos=position;
+						position_upload =position;
 					}else{
 						MainActivityOptions.getMainScreenActivity().requestExternalStoragePermission();
 					}
@@ -96,7 +102,7 @@ public class GridViewAdapter extends ArrayAdapter<GridItemDto> {
 			holder.btn_upload.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					if(pos == position&& null != bitmap){
+					if(position_upload == position&& null != bitmap){
 						ByteArrayOutputStream baos = new ByteArrayOutputStream();
 						bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
 						byte[] imageBytes = baos.toByteArray();
@@ -107,12 +113,36 @@ public class GridViewAdapter extends ArrayAdapter<GridItemDto> {
 							parameters.put("pbID", item.getImageID());
 							parameters.put("data", imageString);
 							parameters.put("fName", MainActivity.getMainScreenActivity().getUserName()+System.currentTimeMillis());
-							new UploadImageTask(parameters).execute(Commons.UPLOAD_IMAGE);
+							new UploadImageTask(parameters,UPLOAD).execute(Commons.UPLOAD_IMAGE);
 						}catch (Exception ex){
 							System.out.println(ex.toString());
 						}
 					}else{
 						Toast.makeText(mContext, "Nothing to upload", Toast.LENGTH_LONG).show();
+					}
+				}
+			});
+			holder.iv_delete.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					if(position_upload != position) {
+						new AlertDialog.Builder(mContext).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Delete Image")
+								.setMessage("Are you sure you want to delete this image?")
+								.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										HashMap<String, String> parameters = null;
+										try {
+											position_delete = position;
+											parameters = new HashMap<String, String>();
+											parameters.put("pbID", item.getImageID());
+											new UploadImageTask(parameters, DELETE).execute(Commons.DELETE_IMAGE);
+										} catch (Exception ex) {
+											System.out.println(ex.toString());
+										}
+										//dialog.dismiss();
+									}
+								}).setNegativeButton("No", null).show();
 					}
 				}
 			});
@@ -126,6 +156,7 @@ public class GridViewAdapter extends ArrayAdapter<GridItemDto> {
 		ImageView imageView;
 		Button btn_change;
 		Button btn_upload;
+		ImageView iv_delete;
 	}
 
 	public void updateImage(Bitmap bitmap){
@@ -139,9 +170,11 @@ public class GridViewAdapter extends ArrayAdapter<GridItemDto> {
 
 		ProgressDialog progressDialog;
 		HashMap<String, String> parameters;
-		public UploadImageTask(HashMap<String, String> postDataParams) {
+		int senario = -1;
+		public UploadImageTask(HashMap<String, String> postDataParams,int senario) {
 			super(postDataParams);
 			parameters = postDataParams;
+			this.senario=senario;
 
 		}
 
@@ -157,33 +190,66 @@ public class GridViewAdapter extends ArrayAdapter<GridItemDto> {
 		@Override
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
-				if (200 == responseCode) {
+				if (senario == UPLOAD) {
+					if (200 == responseCode) {
 
-					String value = result.replace("\\", "");
-					if (value.length() > 2)
-						value = value.substring(1, value.length() - 1);
-					try {
-						JSONObject jo = new JSONObject(value);
-						String status = jo.getString("status");
-						if (status.equals("Success")) {
-							Toast.makeText(mContext, "Image uploaded successful", Toast.LENGTH_LONG).show();
-							mGridData.get(pos).setImage(parameters.get("fName")+".jpg");
-							notifyDataSetChanged();
-						} else {
-							Toast.makeText(mContext, "Image uploaded unsuccessful", Toast.LENGTH_LONG).show();
+						String value = result.replace("\\", "");
+						if (value.length() > 2)
+							value = value.substring(1, value.length() - 1);
+						try {
+							JSONObject jo = new JSONObject(value);
+							String status = jo.getString("status");
+							if (status.equals("Success")) {
+								Toast.makeText(mContext, "Image uploaded successful", Toast.LENGTH_LONG).show();
+								mGridData.get(position_upload).setImage(parameters.get("fName") + ".jpg");
+								notifyDataSetChanged();
+							} else {
+								Toast.makeText(mContext, "Image uploaded unsuccessful", Toast.LENGTH_LONG).show();
+							}
+							position_upload = -1;
+							progressDialog.dismiss();
+						} catch (Exception e) {
+							e.printStackTrace();
+							ShowAlertInformation.showDialog(mContext, "Error", "Updation failed !!!");
+							progressDialog.dismiss();
 						}
+						System.out.println("UploadImageTask result is : " + (result == null ? "" : result));
 						progressDialog.dismiss();
-					} catch (Exception e) {
-						e.printStackTrace();
-						ShowAlertInformation.showDialog(mContext, "Error", "Updation failed !!!");
+					} else {
+						Log.i("UploadImageTask result", result == null ? "" : result);
+						ShowAlertInformation.showDialog(mContext, "Error", "Error");
 						progressDialog.dismiss();
 					}
-					System.out.println("UploadImageTask result is : " + (result == null ? "" : result));
-					progressDialog.dismiss();
-				} else {
-					Log.i("UploadImageTask result", result == null ? "" : result);
-					ShowAlertInformation.showDialog(mContext, "Error", "Error");
-					progressDialog.dismiss();
+				}else if (senario == DELETE) {
+					if (200 == responseCode) {
+
+						String value = result.replace("\\", "");
+						if (value.length() > 2)
+							value = value.substring(1, value.length() - 1);
+						try {
+							JSONObject jo = new JSONObject(value);
+							String status = jo.getString("status");
+							if (status.equals("Success")) {
+								Toast.makeText(mContext, "Image deleted successful", Toast.LENGTH_LONG).show();
+								mGridData.remove(position_delete);
+								notifyDataSetChanged();
+							} else {
+								Toast.makeText(mContext, "Image deleted unsuccessful", Toast.LENGTH_LONG).show();
+							}
+							position_delete=-1;
+							progressDialog.dismiss();
+						} catch (Exception e) {
+							e.printStackTrace();
+							ShowAlertInformation.showDialog(mContext, "Error", "Updation failed !!!");
+							progressDialog.dismiss();
+						}
+						System.out.println("UploadImageTask result is : " + (result == null ? "" : result));
+						progressDialog.dismiss();
+					} else {
+						Log.i("UploadImageTask result", result == null ? "" : result);
+						ShowAlertInformation.showDialog(mContext, "Error", "Error");
+						progressDialog.dismiss();
+					}
 				}
 		}
 

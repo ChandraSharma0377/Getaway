@@ -1,7 +1,8 @@
 package com.gatewayclub.app.main;
 
+import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -12,14 +13,17 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gatewayclub.app.R;
+import com.gatewayclub.app.asynctask.AsyncProcess;
 import com.gatewayclub.app.fragment.HomeFragment;
 import com.gatewayclub.app.fragment.LoginFragment;
+import com.gatewayclub.app.helper.Commons;
 import com.gatewayclub.app.helper.NetworkHelper;
+
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Stack;
@@ -31,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
 	public static final String MyPREFERENCES = "AppPref";
 	private static SharedPreferences sharedpreferences;
 
-	protected Fragment mFrag;
 	protected Fragment cFrag, rootFragment;
 	private HashMap<String, Stack<Fragment>> mFragmentsStack;
 	public TextView actionBarTitle;
@@ -73,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
 			changeNavigationContentFragment(new LoginFragment(), false);
 
 		onNewIntent(getIntent());
+		if(networkHelper.isOnline()){
+			HashMap<String, String> postDataParams = new HashMap<String, String>();
+			new CheckVersionTask(postDataParams).execute(Commons.VERSION_CHECK);
+		}
 
 	}
 
@@ -116,41 +123,7 @@ public class MainActivity extends AppCompatActivity {
 		// btn_exit.setVisibility(View.VISIBLE);
 	}
 
-	OnClickListener logoClik = new OnClickListener() {
 
-		@Override
-		public void onClick(View v) {
-			int id = v.getId();
-			switch (id) {
-			// case R.id.iv_home:
-			// changeNavigationContentFragment(new LandingFragment(), false);
-			// break;
-			// case R.id.backBtn:
-			// removeFragment();
-			// break;
-			// case R.id.btn_exit:
-			// new
-			// AlertDialog.Builder(mainActivity).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Exit")
-			// .setMessage("Are you sure you want to exit?")
-			// .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-			// @Override
-			// public void onClick(DialogInterface dialog, int which) {
-			// finish();
-			// }
-			// }).setNegativeButton("No", null).show();
-			// break;
-			// case R.id.btn_logout:
-			// SharedPreferences.Editor editor =
-			// MainActivity.getSharePreferance().edit();
-			// editor.clear();
-			// editor.commit();
-			// restartActivity();
-			// break;
-			default:
-				break;
-			}
-		}
-	};
 
 	public void changeNavigationContentFragment(Fragment frgm, boolean shouldAdd) {
 
@@ -276,17 +249,6 @@ public class MainActivity extends AppCompatActivity {
 		editor.commit();
 	}
 
-	public static void redirectToFragment(Fragment fragment) {
-		Fragment VF = fragment;
-		MainActivity.getMainScreenActivity().changeNavigationContentFragment(VF, true);
-
-	}
-
-	private void restartActivity() {
-		Intent i = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
-		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-		startActivity(i);
-	}
 
 	@Override
 	protected void onResume() {
@@ -294,4 +256,49 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 
+
+	private class CheckVersionTask extends AsyncProcess {
+
+		public CheckVersionTask(HashMap<String, String> postDataParams) {
+			super(postDataParams);
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			super.onPostExecute(result);
+
+			if (200 == responseCode) {
+				String value = result.replace("\\", "");
+				if (value.length() > 2)
+					value = value.substring(1, value.length() - 1);
+				try {
+					JSONObject jo = new JSONObject(value);
+					String status = jo.getString("status");
+					if (status.equals("Success")) {
+						String version = jo.getString("version");
+						String curVersion = mainActivity.getPackageManager().getPackageInfo(mainActivity.getPackageName(), 0).versionName;
+						float f1 = Float.valueOf(version);
+						float f2 =  Float.valueOf(curVersion);
+						int retval = Float.compare(f1, f2);
+						if(retval > 0) {
+							new AlertDialog.Builder(mainActivity).setIcon(android.R.drawable.ic_dialog_info).setTitle("Update App")
+									.setMessage("New version of app is available. Do you want to update the app?")
+									.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+										@Override
+										public void onClick(DialogInterface dialog, int which) {
+											try {
+												Commons.playStore(mainActivity);
+											} catch (Exception ex) {
+												System.out.println(ex.toString());
+											}
+										}
+									}).setNegativeButton("No", null).show();
+						}
+											}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 }

@@ -93,7 +93,7 @@ public class EditFragment extends BaseFragment implements View.OnClickListener {
     String[] food = new String[]{"Non veg", "Jain food", "Veg food", "Inhouse cooking", "catering service", "self cooking"};
     String[] medical = new String[]{"Doctor", "Medical shop", "Hospital", "Large Hospital"};
     String[] indoorGames = new String[]{"Carrom", "Table Tennis", "Chess", "Ludo", "Playing cards", "Monopoly", "Video Games"};
-    String[] outdoorGames = new String[]{"Cricket", "Cricket Equipments", "football", "football equipments", "badminton", "badminton equipments"};
+    String[] outdoorGames = new String[]{"Cricket", "Cricket Equipments", "Football", "Football equipments", "Badminton", "Badminton equipments", "Basketball", "Basketball equipments"};
     String[] transport = new String[]{"Taxi", "Autostand", "Busstand", "Railway station"};
     String[] tourism = new String[]{"Beach", "Nearest River", "Famous temple", "Historical Place", "Lake / River", "Boating", "Amusement park", "Horse Ridding",
             "Water sport", "Forest", "Sanctuary", "Tourist point"};
@@ -403,9 +403,9 @@ public class EditFragment extends BaseFragment implements View.OnClickListener {
                         hall.setPhdTerraceVerandah(jobjhall.getString("PhdTerraceVerandah"));
                         facilityDto.setHall(hall);
 
-                        edt_weekdays.setText(""+Math.round(Integer.parseInt(prRatePerNight)));
-                        edt_extra_person.setText(""+Math.round(Integer.parseInt(prExtraPersonRate)));
-                        edt_weekend_holiday.setText(""+Math.round(Integer.parseInt(WeekendRate)));
+                        edt_weekdays.setText(convertFloattoInt(prRatePerNight));
+                        edt_extra_person.setText(convertFloattoInt(prExtraPersonRate));
+                        edt_weekend_holiday.setText(convertFloattoInt(WeekendRate));
                         MyHorizontalScrollAdapter adapter = new MyHorizontalScrollAdapter(getActivity(), propertyimagelist);
                         myHorizontalScrollview.setAdapter(getActivity(), adapter);
                         progressDialog.dismiss();
@@ -523,8 +523,8 @@ public class EditFragment extends BaseFragment implements View.OnClickListener {
                         postDataParams.put("POGFootballEquipment", ((RadioButton)rb_list.get(3)).isChecked() ? "YES" : "NO");
                         postDataParams.put("POGBadminton", ((RadioButton)rb_list.get(4)).isChecked() ? "YES" : "NO");
                         postDataParams.put("POGBadmintonEquipment", ((RadioButton)rb_list.get(5)).isChecked() ? "YES" : "NO");
-                        //	postDataParams.put("POGBasketball", rb_list.get(6).isChecked()?"YES":"NO");
-                        //	postDataParams.put("POGBasketballEquipment", rb_list.get(7).isChecked()?"YES":"NO");
+                        postDataParams.put("POGBasketball", ((RadioButton)rb_list.get(6)).isChecked()?"YES":"NO");
+                        postDataParams.put("POGBasketballEquipment", ((RadioButton)rb_list.get(7)).isChecked()?"YES":"NO");
                     }
                     break;
                     case CASE_TOURSIM: {
@@ -879,5 +879,22 @@ public class EditFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void locationSelect(String location) {
         tv_location.setText(getString(R.string.location)+location);
+    }
+
+    private String convertFloattoInt(String value) {
+        try {
+            if (value.equals("")) {
+                return value;
+            } else {
+                if (value.contains(".")) {
+                    return value.split("\\.")[0];
+                } else {
+                    return value;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return value;
+        }
     }
 }
