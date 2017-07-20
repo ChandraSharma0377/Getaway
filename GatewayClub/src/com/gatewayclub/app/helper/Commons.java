@@ -38,6 +38,8 @@ public class Commons {
 	public static final String UPLOAD_IMAGE=BASE_URL +"uploadImage";
 	public static final String UPLOAD_NEW_IMAGE=BASE_URL +"uploadNewImage";
 	public static final String DELETE_IMAGE = BASE_URL + "deleteImage";
+	public static final String GET_GRAPH_INFO = BASE_URL + "getGraphInfo";
+
 
 	public static final String VERSION_CHECK = BASE_URL + "getVersionNo";
 

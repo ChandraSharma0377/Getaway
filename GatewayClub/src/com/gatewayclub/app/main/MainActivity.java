@@ -231,6 +231,20 @@ public class MainActivity extends AppCompatActivity {
 		return sharedpreferences.getString(KEY_APPROVE_COUNT, "");
 	}
 
+
+
+	public void setApproveCount(String approvedCount) {
+		Editor editor = sharedpreferences.edit();
+		editor.putString(KEY_APPROVE_COUNT, approvedCount);
+		editor.commit();
+	}
+
+	public void setPendingCount(String pendingCount) {
+		Editor editor = sharedpreferences.edit();
+		editor.putString(KEY_PENDING_COUNT, pendingCount);
+		editor.commit();
+	}
+
 	public String getMobileNo() {
 		return sharedpreferences.getString(KEY_MOBILE, "");
 	}

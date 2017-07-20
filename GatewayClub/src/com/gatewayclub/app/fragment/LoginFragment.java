@@ -29,7 +29,7 @@ public class LoginFragment extends Fragment {
 
 	private EditText edt_uname, edt_pwd;
 	private CheckBox cb_remember;
-	private Button btn_login;
+	private EditText btn_login;
 	private LoginTask lat;
 	private ProgressDialog progressDialog;
 
@@ -42,10 +42,11 @@ public class LoginFragment extends Fragment {
 
 		View view = inflater.inflate(R.layout.lay_login, container, false);
 		getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-		btn_login = (Button) view.findViewById(R.id.edt_login);
+		btn_login = (EditText) view.findViewById(R.id.edt_login);
 		edt_uname = (EditText) view.findViewById(R.id.edt_uname);
 		edt_pwd = (EditText) view.findViewById(R.id.edt_pwd);
 		cb_remember = (CheckBox) view.findViewById(R.id.cb_remember);
+		btn_login.setKeyListener(null);
 		// tv_forget_pwd=(TextView)view.findViewById(R.id.tv_forget_pwd);
 		// tv_forget_pwd.setOnClickListener(new OnClickListener() {
 		// @Override

@@ -30,8 +30,8 @@
             android:orientation="horizontal" >
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/login_icon"
+                android:layout_height="@dimen/login_icon"
                 android:background="@drawable/login_pg_ic1" />
 
             <EditText
@@ -56,8 +56,8 @@
             android:orientation="horizontal" >
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/login_icon"
+                android:layout_height="@dimen/login_icon"
                 android:background="@drawable/login_pg_ic2" />
 
             <EditText
@@ -83,21 +83,21 @@
             android:orientation="horizontal" >
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/login_icon"
+                android:layout_height="@dimen/login_icon"
                 android:background="@drawable/login_pg_ic3"
                 />
 
-            <Button
+            <EditText
                 android:id="@+id/edt_login"
                 android:layout_width="@dimen/edt_width"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/login_margin"
                 android:background="@drawable/login_background"
-                android:gravity="center_vertical"
-                android:paddingLeft="10dp"
-                android:text="@string/login"
+                android:gravity="center"
+                android:hint="@string/login"
                 android:textAllCaps="false"
+                android:inputType="none"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white" />
         </LinearLayout>
