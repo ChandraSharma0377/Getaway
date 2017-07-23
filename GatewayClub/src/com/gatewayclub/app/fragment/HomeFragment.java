@@ -103,6 +103,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         bar_chart.setPinchZoom(false);
         bar_chart.setDrawGridBackground(false);
         bar_chart.setTouchEnabled(false);
+
         YAxis rightAxis = bar_chart.getAxisRight();
         rightAxis.setDrawGridLines(false);
         rightAxis.setSpaceTop(15f);
@@ -115,6 +116,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         xAxis.setLabelRotationAngle(90);
         bar_chart.invalidate();
         //setBarData(Commons.getCurrentYear());
+        // To hide the bottom color description option
+        bar_chart.getLegend().setEnabled(false);
         sp_location = (Spinner) rootview.findViewById(R.id.sp_location);
         sp_property = (Spinner) rootview.findViewById(R.id.sp_property);
         sp_property.setEnabled(false);
@@ -529,10 +532,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         valueSet.add(v1e5);
         BarEntry v1e6 = new BarEntry(data[11], 11); // Jun
         valueSet.add(v1e6);
-
+         int[] COLORFUL_COLORS = {
+                 Color.rgb(0,173,239)
+        };
 
         BarDataSet barDataSet = new BarDataSet(valueSet, "");
-        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        barDataSet.setColors(COLORFUL_COLORS);
 
         dataSets = new ArrayList<>();
         dataSets.add(barDataSet);

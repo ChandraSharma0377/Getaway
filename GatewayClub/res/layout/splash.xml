@@ -6,10 +6,11 @@
     android:padding="10dp" >
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="200dp"
-        android:background="@drawable/logo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_logo"
         android:layout_centerInParent="true" />
-
+
+
 
 </RelativeLayout>
