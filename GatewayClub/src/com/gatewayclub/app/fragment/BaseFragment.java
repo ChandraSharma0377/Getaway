@@ -58,7 +58,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 		tv_total_count = (TextView) rootview.findViewById(R.id.tv_total_count);
 		tv_pending = (TextView) rootview.findViewById(R.id.tv_pending);
 		tv_mobile.setText( MainActivity.getMainScreenActivity().getMobileNo());
-		tv_total_count.setText("Total business till now : " + MainActivity.getMainScreenActivity().getApproveCount());
+		tv_total_count.setText("Total business : " + MainActivity.getMainScreenActivity().getApproveCount());
 		tv_pending.setText("Awaiting approval : " + MainActivity.getMainScreenActivity().getPendingCount());
 		iv_book = (ImageView) rootview.findViewById(R.id.iv_book);
 		iv_calender = (ImageView) rootview.findViewById(R.id.iv_calender);
@@ -197,8 +197,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 					MainActivityOptions.getMainScreenActivity().finish();
 				}
 			}).setNegativeButton("No", null).show();
-			//MainActivityOptions.getMainScreenActivity().onBackPressed();
-			// MainActivity.getMainScreenActivity().onBackPressed();
 			break;
 		case R.id.iv_book_sum:
 			MainActivityOptions.getMainScreenActivity().changeNavigationContentFragment(new BookingSumFragment(),

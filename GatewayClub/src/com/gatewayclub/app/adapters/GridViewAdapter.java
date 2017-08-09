@@ -80,7 +80,7 @@ public class GridViewAdapter extends ArrayAdapter<GridItemDto> {
 
 		final GridItemDto item = mGridData.get(position);
 		if(layoutResourceId==R.layout.grid_item_img_txt_layout) {
-			Picasso.with(mContext).load(item.getImage()).resize(140, 140).into(holder.imageView);
+			Picasso.with(mContext).load(item.getImageDrawable()).resize(140, 140).into(holder.imageView);
 		}
 		else {
 			Picasso.with(mContext).load(Commons.IMAGE_BASE_URL + item.getImage()).placeholder(R.drawable.placeholder).resize(140, 140).into(holder.imageView);

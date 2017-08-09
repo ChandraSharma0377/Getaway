@@ -37,7 +37,6 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -65,10 +64,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private int LOCATION_CALL = 0;
     private int GRAPH_CALL = 2;
 
-//    public static final int[] MATERIAL_COLORS = {
-//            rgb("#3498db"),
-//            rgb("#2ecc71"), rgb("#f1c40f"), rgb("#e74c3c"), rgb("#3498db")
-//    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle args) {
@@ -86,7 +81,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         tv_location = (TextView) rootview.findViewById(R.id.tv_location);
         tv_name.setText("Welcome " + MainActivity.getMainScreenActivity().getUserName());
         tv_mobile.setText(MainActivity.getMainScreenActivity().getMobileNo());
-        tv_total_count.setText("Total business till now : " + MainActivity.getMainScreenActivity().getApproveCount());
+        tv_total_count.setText("Total business : " + MainActivity.getMainScreenActivity().getApproveCount());
         tv_pending.setText("Awaiting approval : " + MainActivity.getMainScreenActivity().getPendingCount());
         iv_back.setOnClickListener(this);
         iv_cross.setOnClickListener(this);
@@ -96,7 +91,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         intialzeGrid();
         bar_chart = (BarChart) rootview.findViewById(R.id.bar_chart);
         resetBarData();
-        //initBarChart();
         BarData data = new BarData(getXAxisValues(), getDataSet(graphData));
         bar_chart.setData(data);
         bar_chart.setDescription("");
@@ -209,7 +203,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
                 break;
             case R.id.iv_back:
-                //MainActivity.getMainScreenActivity().onBackPressed();
                 new AlertDialog.Builder(getActivity()).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Logout")
                         .setMessage("Are you sure you want to logout?")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -379,7 +372,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 ShowAlertInformation.showDialog(getActivity(), "Error", "Error");
                 progressDialog.dismiss();
             }
-            tv_total_count.setText("Total business till now : " + MainActivity.getMainScreenActivity().getApproveCount());
+            tv_total_count.setText("Total business : " + MainActivity.getMainScreenActivity().getApproveCount());
             tv_pending.setText("Awaiting approval : " + MainActivity.getMainScreenActivity().getPendingCount());
         }
 
@@ -403,88 +396,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         sp_property.setAdapter(propertyAdapter);
     }
 
-//    private void setBarData(String year) {
-//        ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
-//
-//        for (int i = 0; i < graphData.length; i++) {
-//            yVals1.add(new BarEntry(i + 1, graphData[i]));
-//        }
-//            BarDataSet barDataSet = new BarDataSet(yVals1, "The Year "+year);
-//            barDataSet.setDrawIcons(false);
-//            barDataSet.setColors(MATERIAL_COLORS);
-//            ArrayList<IBarDataSet> dataSets = new ArrayList<IBarDataSet>();
-//            dataSets.add(barDataSet);
-//
-//            BarData data = new BarData(dataSets);
-//            data.setValueTextSize(10f);
-//            //data.setValueTypeface(mTfLight);
-//            data.setBarWidth(0.5f);
-//            bar_chart.setData(data);
-//            bar_chart.getData().notifyDataChanged();
-//            bar_chart.notifyDataSetChanged();
-//        for (IDataSet set : bar_chart.getData().getDataSets())
-//            set.setDrawValues(true);
-//            bar_chart.invalidate();
-//    }
 
-//    private void initBarChart() {
-//
-//        bar_chart.setDrawBarShadow(false);
-//        bar_chart.setDrawValueAboveBar(true);
-//        bar_chart.getDescription().setEnabled(false);
-//        bar_chart.setMaxVisibleValueCount(12);
-//        bar_chart.setPinchZoom(false);
-//        bar_chart.setDrawGridBackground(false);
-//        bar_chart.setTouchEnabled(false);
-//
-//        IAxisValueFormatter xAxisFormatter = new DayAxisValueFormatter(bar_chart);
-//
-//        XAxis xAxis = bar_chart.getXAxis();
-//        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-//        //  xAxis.setTypeface(mTfLight);
-//        xAxis.setDrawGridLines(false);
-//        xAxis.setDrawAxisLine(false);
-//        xAxis.setGranularity(1f); // only intervals of 1 day
-//        xAxis.setLabelCount(12);
-//        xAxis.setLabelRotationAngle(90.0f);
-//        xAxis.setValueFormatter(xAxisFormatter);
-//
-//
-//        IAxisValueFormatter custom = new MyAxisValueFormatter();
-//
-//        YAxis leftAxis = bar_chart.getAxisLeft();
-//        // leftAxis.setTypeface(mTfLight);
-//        leftAxis.setLabelCount(20, false);
-//        leftAxis.setValueFormatter(custom);
-//        leftAxis.setDrawGridLines(true);
-//        leftAxis.setDrawAxisLine(true);
-//        leftAxis.setDrawLabels(true);
-//        leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
-//        leftAxis.setSpaceTop(15f);
-//        leftAxis.setAxisMinimum(0.0f); // this replaces setStartAtZero(true)
-//
-//        YAxis rightAxis = bar_chart.getAxisRight();
-//        rightAxis.setDrawGridLines(false);
-//        //rightAxis.setTypeface(mTfLight);
-//        rightAxis.setLabelCount(20, false);
-//        rightAxis.setValueFormatter(custom);
-//        rightAxis.setSpaceTop(15f);
-//        rightAxis.setDrawAxisLine(false);
-//        rightAxis.setDrawLabels(false);
-//        rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
-//
-//        Legend l = bar_chart.getLegend();
-//        l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
-//        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
-//        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
-//        l.setDrawInside(false);
-//
-//        l.setForm(Legend.LegendForm.SQUARE);
-//        l.setFormSize(9f);
-//        l.setTextSize(11f);
-//        l.setXEntrySpace(4f);
-//
-//    }
 
     private float convertValue(String val) {
         try {

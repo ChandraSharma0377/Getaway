@@ -99,6 +99,8 @@ public class EditFragment extends BaseFragment implements View.OnClickListener {
             "Water sport", "Forest", "Sanctuary", "Tourist point"};
 
     String data[][] = new String[][]{bedroom, hall, kitchen, food, transport, medical, indoorGames, outdoorGames, tourism};
+    int [] images = new int[]{R.drawable.bedroom,R.drawable.hall,R.drawable.kitchen,R.drawable.food,
+            R.drawable.transport,R.drawable.medical,R.drawable.indoor,R.drawable.outdoor,R.drawable.tourism};
 
 
     @Override
@@ -148,7 +150,8 @@ public class EditFragment extends BaseFragment implements View.OnClickListener {
         for (int i = 0; i < gridtitle.length; i++) {
             GridItemDto item = new GridItemDto();
             item.setTitle(gridtitle[i]);
-            item.setImage("http://www.nag.co.in/images/house.png");
+           // item.setImage("bedroom.png");
+            item.setImageDrawable(images[i]);
             item.setFacility(data[i]);
             mGridData.add(item);
         }

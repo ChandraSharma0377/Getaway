@@ -10,6 +10,8 @@ public class GridItemDto {
     private String image;
     private String[] facility;
     private String imageID;
+    private int imageDrawable;
+
     public GridItemDto() {
 
     }
@@ -46,13 +48,23 @@ public class GridItemDto {
         this.imageID = imageID;
     }
 
+    public int getImageDrawable() {
+        return imageDrawable;
+    }
+
+    public void setImageDrawable(int imageDrawable) {
+        this.imageDrawable = imageDrawable;
+    }
+
     @Override
     public String toString() {
-        return "GridItemDto{" +
-                "title='" + title + '\'' +
-                ", image='" + image + '\'' +
-                ", facility=" + Arrays.toString(facility) +
-                ", imageID='" + imageID + '\'' +
-                '}';
+        final StringBuffer sb = new StringBuffer("GridItemDto{");
+        sb.append("title='").append(title).append('\'');
+        sb.append(", image='").append(image).append('\'');
+        sb.append(", facility=").append(facility == null ? "null" : Arrays.asList(facility).toString());
+        sb.append(", imageID='").append(imageID).append('\'');
+        sb.append(", imageDrawable=").append(imageDrawable);
+        sb.append('}');
+        return sb.toString();
     }
 }

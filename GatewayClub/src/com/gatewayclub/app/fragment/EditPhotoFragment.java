@@ -21,6 +21,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gatewayclub.app.R;
@@ -59,7 +60,7 @@ public class EditPhotoFragment extends BaseFragment {
 	private String pmID="";
 	private ImageView iv_upload;
 	private String URL ="http://www.thegetawayclub.in/Test_web_application/WebService1.asmx/uploadImage";
-
+	private TextView tv_location;
 
 
 	public EditPhotoFragment(ArrayList<PropertyImageDto> imagelist , String pmID) {
@@ -72,7 +73,7 @@ public class EditPhotoFragment extends BaseFragment {
 		super.onCreateView(inflater, container, args);
 		View view = inflater.inflate(R.layout.frag_editphoto, container, false);
 		getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-
+		tv_location =(TextView)view.findViewById(R.id.tv_location);
 		mGridView = (ExpandableHeightGridView) view.findViewById(R.id.gridView);
 		btn_addmore = (Button) view.findViewById(R.id.btn_addmore);
 		btn_addmore.setOnClickListener(new View.OnClickListener() {
@@ -124,11 +125,11 @@ public class EditPhotoFragment extends BaseFragment {
 		// TODO Auto-generated method stub
 		
 	}
+
 	@Override
 	public void locationSelect(String location) {
-
+		tv_location.setText(getString(R.string.location)+location);
 	}
-
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);

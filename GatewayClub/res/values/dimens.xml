@@ -21,4 +21,5 @@
     <dimen name="grid_vertical_spacing">30dp</dimen>
 
     <dimen name="login_icon">35dp</dimen>
+    <dimen name="actionbar_textsize">13sp</dimen>
 </resources>

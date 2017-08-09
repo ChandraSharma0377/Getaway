@@ -19,14 +19,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Location : Alibag" />
+            android:text="" />
 
         <TextView
             android:id="@+id/tv_distance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Alibag13BKHim" />
+            android:visibility="gone"
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
